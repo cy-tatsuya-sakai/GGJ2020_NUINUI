@@ -697,6 +697,12 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 2350777909073190221}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &743129502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3930846976377951339, guid: cd683636c264d63499eae4fa5fd423a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 934986726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &770521380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,12 +1173,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Marker
       value: 
-      objectReference: {fileID: 37501426}
-    - target: {fileID: 8964444692944191983, guid: 15e41a2de4de4ff43920f8885424dc3a,
-        type: 3}
-      propertyPath: speed
-      value: 0.1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 743129502}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15e41a2de4de4ff43920f8885424dc3a, type: 3}
 --- !u!1 &1325042560 stripped
@@ -1707,7 +1708,7 @@ PrefabInstance:
     - target: {fileID: 2628353543064147823, guid: 42c9782b796f55442b861cd6c9eb36a3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2628353543064147823, guid: 42c9782b796f55442b861cd6c9eb36a3,
         type: 3}
