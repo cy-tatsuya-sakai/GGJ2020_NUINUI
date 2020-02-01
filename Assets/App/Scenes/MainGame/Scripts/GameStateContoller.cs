@@ -120,10 +120,19 @@ public class GameStateContoller : MonoBehaviour
             // 裏になる？
             if (gameCounter > GameTimeMax)
             {
-                isReverse = true;
-                gameStatus = GameStatus.ReadyReverse;
-                // エネミーと穴と線をリセット
-                ResetGameObject();
+                // 穴が規定数以上だったら、即エンディング
+                int holes = GetNumberOfHoles();
+                if(holes >= numberOfBadHoles)
+                {
+                    SceneManager.LoadScene("EndingBad");
+                }
+                else
+                {
+                    isReverse = true;
+                    gameStatus = GameStatus.ReadyReverse;
+                    // エネミーと穴と線をリセット
+                    ResetGameObject();
+                }
             }
         }
         else if (gameStatus == GameStatus.GameReverse)
@@ -160,7 +169,7 @@ public class GameStateContoller : MonoBehaviour
             timeupCounter += Time.deltaTime;
             if (timeupCounter > timeupCounterMax)
             {
-                if(numOfHoles > numberOfBadHoles)
+                if(numOfHoles >= numberOfBadHoles)
                 {
                     SceneManager.LoadScene("EndingBad");
                 }
