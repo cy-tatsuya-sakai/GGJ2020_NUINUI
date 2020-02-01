@@ -69,7 +69,6 @@ public class GameStateContoller : MonoBehaviour
                 comboCounter = 0.0f;
                 isComboTerm = false;
             }
-            Debug.Log(comboCounter);
         }
     }
 
