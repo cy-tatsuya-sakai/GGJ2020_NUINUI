@@ -13,11 +13,10 @@ public class Enemy : MonoBehaviour
 
     //Enemyの移動ポイント
     private List<GameObject> enemyRoots;
-    //[SerializeField,Header("Enemyの移動ポイント")] private GameObject[] rootPoints;
     [SerializeField, Header("Enemyの移動速度")] private float speed;
     public int _rootNum, _beforeRootNum, _canNotGoRootNum;
 
-    public bool moveStop;
+    public bool moveStop, reStart;
 
     private float _timer, _randomTime;
 
@@ -25,6 +24,9 @@ public class Enemy : MonoBehaviour
     private bool instance;
 
     [SerializeField,Header("Enemyの移動再開時間")] private int reStartTime;
+
+    // Game Manager
+    GameObject objGameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -43,17 +45,9 @@ public class Enemy : MonoBehaviour
         _rootNum = Random.Range(0, enemyRoots.Count);
         //穴生成時間の設定
         _randomTime = Random.Range(0.0f, 5.0f);
+        // Game Manager
+        objGameManager = GameObject.Find("GameManager");
     }
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("RootPoint"))
-        {
-            RootSetting(1);
-        }
-    }
-    */
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -91,7 +85,8 @@ public class Enemy : MonoBehaviour
                 transform.position = enemyPos;
 
                 //穴を生成
-                if (instance == false)
+                bool isComboTerm = objGameManager.GetComponent<GameStateContoller>().IsComboTerm();
+                if (instance == false && isComboTerm == false)
                 {
                     CreateHole(enemyPos);
                 }
@@ -163,6 +158,7 @@ public class Enemy : MonoBehaviour
         //タイマーをリセット
         _timer = 0.0f;
         _randomTime = Random.Range(3.0f, 5.0f);
+
         //移動開始
         moveStop = false;
     }

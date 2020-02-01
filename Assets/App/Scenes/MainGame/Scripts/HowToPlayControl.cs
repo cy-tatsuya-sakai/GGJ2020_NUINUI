@@ -11,12 +11,14 @@ public class HowToPlayControl : MonoBehaviour
         
     }
 
+    public void OnClick()
+    {
+        SceneManager.LoadScene("MainGame");
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
-        {
-            SceneManager.LoadScene("MainGame");
-        }
+
     }
 }
