@@ -58,11 +58,6 @@ public class GameStateContoller : MonoBehaviour
             gameCounter += Time.deltaTime;
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            SetComboTerm();
-        }
-
         // Combo Counter
         if (isComboTerm)
         {
