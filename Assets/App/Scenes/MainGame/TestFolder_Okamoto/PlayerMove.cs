@@ -21,6 +21,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // judge Game State
         bool isGame = true;
         GameStateContoller.GameStatus status;
@@ -34,12 +35,13 @@ public class PlayerMove : MonoBehaviour
         // ClikDown
         if (Input.GetMouseButtonDown(0)
             && isGame)
+
         {
             transform.LookAt(Marker);
-            Vector3 pos = gameObject.transform.position;
-            distance_two = Vector3.Distance(pos, Marker.position);
+            Vector3 Pinpos = gameObject.transform.position;
+            distance_two = Vector3.Distance(Pinpos, Marker.position);
             float present_Location = (Time.time * speed) / distance_two;
-            transform.position = Vector3.Lerp(pos, Marker.position, present_Location);
+            transform.position = Vector3.MoveTowards(Pinpos, Marker.position, present_Location);
         }
     }
 }
