@@ -2,24 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DispTimer : MonoBehaviour
 {
-    public Text text;
+    public TextMeshProUGUI text;
 
+    // Game Manager
     GameObject objGameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Game Manager
         objGameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        float counter = objGameManager.GetComponent<GameStateContoller>().GetGameCounter();
-        int counterInt = (int)counter;
-        text.text = "Timer:" + counterInt.ToString();
+        // Game Manager
+        bool isReverse = objGameManager.GetComponent<GameStateContoller>().IsReverse();
+
+        float counter;
+        if(isReverse)
+        {
+            counter = objGameManager.GetComponent<GameStateContoller>().GetGameReverseCounter();
+            int counterInt = (int)counter;
+            text.text = "ReTimer:" + counterInt.ToString();
+        }
+        else
+        {
+            counter = objGameManager.GetComponent<GameStateContoller>().GetGameCounter();
+            int counterInt = (int)counter;
+            text.text = "Timer:" + counterInt.ToString();
+        }
     }
 }

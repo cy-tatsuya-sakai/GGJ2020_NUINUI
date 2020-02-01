@@ -78,7 +78,9 @@ public class MarkingPinManager : MonoBehaviour
         int num = _markingPinList.Count;
         for(int i = 0; i < num; i++)
         {
-            Destroy(_markingPinList[i].gameObject);
+            float sec = 0.5f;
+            if(i < num - 4) { sec = 0.0f; }
+            Destroy(_markingPinList[i].gameObject, sec);
         }
         _markingPinList.Clear();
     }
@@ -91,7 +93,7 @@ public class MarkingPinManager : MonoBehaviour
     public MarkingPin GetMarkingPin(Vector3 pos)
     {
         var collList = Physics2D.OverlapPointAll(new Vector2(pos.x, pos.y));
-        Debug.Log(collList.Length);
+        // Debug.Log(collList.Length);
         int idx = -1;
         foreach(var coll in collList)
         {
