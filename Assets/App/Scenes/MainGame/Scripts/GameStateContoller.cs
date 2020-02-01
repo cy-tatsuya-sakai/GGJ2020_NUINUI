@@ -64,6 +64,7 @@ public class GameStateContoller : MonoBehaviour
         if (isComboTerm)
         {
             comboCounter += Time.deltaTime;
+            Debug.Log(comboCounter);
             if (comboCounter > comboCounterMax)
             {
                 comboCounter = 0.0f;
