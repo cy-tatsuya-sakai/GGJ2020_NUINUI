@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &4264058179156068037
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927118806154950187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 8895133002630390932, guid: d8ea5b3d7869b054597dce81e72d2fc9, type: 3}
 --- !u!1 &4420923063392254962
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +23,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8622945545533832200}
+  - component: {fileID: 8914637811205590225}
   m_Layer: 0
   m_Name: Dress
   m_TagString: Untagged
@@ -31,6 +46,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8914637811205590225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420923063392254962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe83914afd4b9414091e6fa342160252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &4644574945415319891
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528426519833229186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 7739624724235629446, guid: d8ea5b3d7869b054597dce81e72d2fc9, type: 3}
 --- !u!1001 &7935270695334766347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38,6 +79,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8622945545533832200}
     m_Modifications:
+    - target: {fileID: -8351551322108069673, guid: d8ea5b3d7869b054597dce81e72d2fc9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d8ea5b3d7869b054597dce81e72d2fc9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -98,11 +144,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: dress_NN_v2
       objectReference: {fileID: 0}
+    - target: {fileID: 6582651995270254715, guid: d8ea5b3d7869b054597dce81e72d2fc9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8ea5b3d7869b054597dce81e72d2fc9, type: 3}
 --- !u!4 &3126916962608172049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d8ea5b3d7869b054597dce81e72d2fc9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7935270695334766347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5528426519833229186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2497056905537310857, guid: d8ea5b3d7869b054597dce81e72d2fc9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7935270695334766347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1927118806154950187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -819304389999472352, guid: d8ea5b3d7869b054597dce81e72d2fc9,
     type: 3}
   m_PrefabInstance: {fileID: 7935270695334766347}
   m_PrefabAsset: {fileID: 0}

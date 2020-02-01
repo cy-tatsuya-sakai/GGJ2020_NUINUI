@@ -43,7 +43,7 @@ public class MarkingPinTest : MonoBehaviour
             {
                 testObj.transform.position = Util.GetMouseWorldPosition(_cam);
 
-                if(Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButtonDown(0) && HitDress(testObj.transform.position))
                 {
                     var pin = _markingPinManager.GetMarkingPin(testObj.transform.position);
                     var pos = (pin == null) ? testObj.transform.position : pin.transform.position;
@@ -68,5 +68,19 @@ public class MarkingPinTest : MonoBehaviour
             }
             break;
         }
+    }
+
+    private bool HitDress(Vector3 pos)
+    {
+        var hitList = Physics.RaycastAll(pos - Vector3.forward * 10, Vector3.forward, 100.0f);
+        foreach(var hit in hitList)
+        {
+            if(hit.collider.gameObject.GetComponentInParent<Dress>() != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
