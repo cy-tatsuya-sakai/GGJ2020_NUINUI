@@ -29,7 +29,7 @@ public class GameStateContoller : MonoBehaviour
     bool isComboTerm;
     float comboCounter;
     [SerializeField, Header("コンボ期間（穴の抑制）")]
-    float comboCounterMax = 3.0f;
+    float comboCounterMax = 5.0f;
 
 
     // Start is called before the first frame update
