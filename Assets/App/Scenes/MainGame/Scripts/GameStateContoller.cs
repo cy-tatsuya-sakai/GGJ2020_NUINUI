@@ -160,17 +160,17 @@ public class GameStateContoller : MonoBehaviour
             timeupCounter += Time.deltaTime;
             if (timeupCounter > timeupCounterMax)
             {
-                if (numOfExcellent >= numberOfExcellents)
+                if(numOfHoles > numberOfBadHoles)
+                {
+                    SceneManager.LoadScene("EndingBad");
+                }
+                else if (numOfExcellent >= numberOfExcellents)
                 {
                     SceneManager.LoadScene("EndingExcellent");
                 }
-                else if (numOfHoles <= numberOfBadHoles)
-                {
-                    SceneManager.LoadScene("EndingGood");
-                }
                 else
                 {
-                    SceneManager.LoadScene("EndingBad");
+                    SceneManager.LoadScene("EndingGood");
                 }
             }
         }
