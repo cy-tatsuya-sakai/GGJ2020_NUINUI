@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateContoller : MonoBehaviour
 {
@@ -80,6 +81,11 @@ public class GameStateContoller : MonoBehaviour
             if (gameStatus == GameStatus.GameReverse)
             {
                 gameReverseCounter += Time.deltaTime;
+                // タイムアップ？
+                if(gameReverseCounter > GameReverseTimeMax)
+                {
+                    SceneManager.LoadScene("Title");
+                }
             }
         }
         else
