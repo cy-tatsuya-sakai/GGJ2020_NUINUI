@@ -16,3 +16,5 @@ MonoBehaviour:
   _audioClipInfoList:
   - key: A
     clip: {fileID: 8300000, guid: 877232a08c5417947afe054142f8ea07, type: 3}
+  - key: TITLE_BGM
+    clip: {fileID: 8300000, guid: 60455cd2dedc550438d56f534d371496, type: 3}

@@ -14,5 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sourceFolder: Assets/Data/Sounds/SE
   _audioClipInfoList:
+  - key: COMBO1
+    clip: {fileID: 8300000, guid: 0ae45a08a06f13e4ab17dcc5030344b6, type: 3}
+  - key: COMBO2
+    clip: {fileID: 8300000, guid: c69234146f904f949834bcc10f68a16a, type: 3}
+  - key: COMBO3
+    clip: {fileID: 8300000, guid: f0aeaa2bb8a15744ab588f98f9b771c9, type: 3}
+  - key: COMBO4
+    clip: {fileID: 8300000, guid: 0679b778d00b04a4aa6d7dacc687c5f8, type: 3}
+  - key: COMBO5
+    clip: {fileID: 8300000, guid: 82d21e88e16a7a542ae5f430bb460d09, type: 3}
+  - key: COMBO6
+    clip: {fileID: 8300000, guid: b7015b6ad26be5f47b28c4c3167dd384, type: 3}
+  - key: COMBO7
+    clip: {fileID: 8300000, guid: ae6016258295cd341837249f87a87ba5, type: 3}
+  - key: COMBO8
+    clip: {fileID: 8300000, guid: af7a0ad54625c224d8bd99d029ab8505, type: 3}
+  - key: COMBO9
+    clip: {fileID: 8300000, guid: 87fa92994bf8968449d486a4160f320f, type: 3}
+  - key: NEEDLE
+    clip: {fileID: 8300000, guid: 46fc8f32cb8c1f2449d829e0ba1cd67f, type: 3}
   - key: A
     clip: {fileID: 8300000, guid: 4077501f6785acd419956334be58f320, type: 3}
+  - key: TRIANGLE
+    clip: {fileID: 8300000, guid: a88bdf402d0510e43a087ccd1c9bd9d7, type: 3}

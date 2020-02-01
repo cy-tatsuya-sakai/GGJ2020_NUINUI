@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using Lib.Sound;
 
 /// <summary>
 /// なんかマチ針を保持。三角形を作るためのリスト。その他計算
@@ -27,6 +28,7 @@ public class MarkingPinManager : MonoBehaviour
     /// <param name="pos"></param>
     public void AddPin(Vector3 pos)
     {
+        SoundManager.Instance.SE.Play(_SE._NEEDLE);
         var obj = Instantiate(_markingPinPrefab, pos, Quaternion.identity);
         obj.transform.SetParent(transform);
         _markingPinList.Add(obj);
