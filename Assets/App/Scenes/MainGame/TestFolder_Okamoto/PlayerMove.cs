@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     bool Pin = false;
     Pos MarkerPos = new Pos();
+    public GameObject Light;
 
     // for Game State
     GameObject objGameManager;
@@ -53,6 +54,7 @@ public class PlayerMove : MonoBehaviour
             Pin = true;
             transform.LookAt(Marker);
             MarkerPos._MarkerPos = Marker.position;
+            Instantiate(Light, Marker.position, Quaternion.identity);
         }
 
         if (Pin == true)
