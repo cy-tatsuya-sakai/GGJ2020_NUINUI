@@ -8,6 +8,8 @@ public class GameStateContoller : MonoBehaviour
     float WaitForGameStart = 4.0f;
     [SerializeField, Header("表面の時間")]
     float GameTimeMax;
+    [SerializeField, Header("コンボ期間に入るコンボ数")]
+    int ComboTermNumMax = 3;
 
     // public
     public enum GameStatus
@@ -92,7 +94,12 @@ public class GameStateContoller : MonoBehaviour
     // コンボ期間に入ります
     public void SetComboTerm(int num)
     {
-        isComboTerm = true;
-        comboCounter = 0.0f;
+        Debug.Log("ComboNum:");
+        Debug.Log(num);
+        if (num >= ComboTermNumMax)
+        {
+            isComboTerm = true;
+            comboCounter = 0.0f;
+        }
     }
 }
