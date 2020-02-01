@@ -12,8 +12,6 @@ public class StartSignal : MonoBehaviour
     [SerializeField, Header("Goからゲームが始まるまでの時間")]
     float CounterForGameStart = 1.0f;
 
-
-
     // private
     GameObject ObjReady;
     GameObject ObjStart;
