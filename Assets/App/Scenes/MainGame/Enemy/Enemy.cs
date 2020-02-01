@@ -13,14 +13,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField,Header("Enemyの移動ポイント")] private GameObject[] rootPoints;
     [SerializeField, Header("Enemyの移動速度")] private float speed;
-    private int _rootNum, _beforeRootNum, _canNotGoRootNum;
+    public int _rootNum, _beforeRootNum, _canNotGoRootNum;
 
     public bool moveStop;
 
-    public float _timer, _randomTime;
+    private float _timer, _randomTime;
 
     [SerializeField,Header("穴オブジェクト")] private GameObject hole;
-    [SerializeField] private GameObject testHoleObj;
     private bool instance;
 
     [SerializeField,Header("Enemyの移動再開時間")] private int reStartTime;
@@ -35,7 +34,17 @@ public class Enemy : MonoBehaviour
         _randomTime = Random.Range(0.0f, 5.0f);
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("RootPoint"))
+        {
+            RootSetting(1);
+        }
+    }
+    */
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("RootPoint"))
         {
@@ -54,7 +63,7 @@ public class Enemy : MonoBehaviour
         {
             RootSetting(2);
         }
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raydis, Color.red);
+        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raydis, Color.red);
 
         //タイマー開始
         _timer += Time.deltaTime;

@@ -5,11 +5,13 @@ using UnityEngine;
 public class Hole : MonoBehaviour
 {
     private float _speed, _timer;
+    [SerializeField,Header("穴の最大サイズ")] private float maxSize;
 
     // Start is called before the first frame update
     void Start()
     {
-        _speed = Random.Range(1.5f, 3.0f);
+        //スピードによって拡大速度を変更
+        _speed = Random.Range(5.0f, 10.0f);
     }
 
     // Update is called once per frame
@@ -18,8 +20,8 @@ public class Hole : MonoBehaviour
         _timer += Time.deltaTime;
 
         //穴のサイズを徐々に大きくする
-        transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x + Time.deltaTime / _speed, 1.0f, 5.0f),
-                                                                 Mathf.Clamp(transform.localScale.y + Time.deltaTime / _speed, 1.0f, 5.0f));
+        transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x + Time.deltaTime / _speed, 1.0f, maxSize),
+                                                                 Mathf.Clamp(transform.localScale.y + Time.deltaTime / _speed, 1.0f, maxSize));
 
         if (_timer >= 3.0f)
         {
