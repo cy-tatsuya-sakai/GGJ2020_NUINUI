@@ -6,6 +6,8 @@ public class GameStateContoller : MonoBehaviour
 {
     [SerializeField, Header("シーン開始からゲームが始まるまでの時間")]
     float WaitForGameStart = 4.0f;
+    [SerializeField, Header("表面の時間")]
+    float GameTimeMax;
 
     // public
     public enum GameStatus
