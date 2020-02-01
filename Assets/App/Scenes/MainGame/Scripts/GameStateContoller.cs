@@ -8,9 +8,9 @@ public class GameStateContoller : MonoBehaviour
     [SerializeField, Header("シーン開始からゲームが始まるまでの時間")]
     float WaitForGameStart = 4.0f;
     [SerializeField, Header("表面の時間")]
-    float GameTimeMax = 120;
+    float GameTimeMax = 30;
     [SerializeField, Header("裏面の時間")]
-    float GameReverseTimeMax = 120;
+    float GameReverseTimeMax = 30;
     [SerializeField, Header("コンボ期間に入るコンボ数")]
     int ComboTermNumMax = 3;
     [SerializeField, Header("エネミーPrefab")]
@@ -39,6 +39,11 @@ public class GameStateContoller : MonoBehaviour
     [SerializeField, Header("コンボ期間（穴の抑制）")]
     float comboCounterMax = 5.0f;
 
+    // Result
+    [SerializeField, Header("Bad Endになる穴の数")]
+    int numberOfBadHoles = 2;
+    [SerializeField, Header("Excellent EndになるExc.の数")]
+    int numberOfExcellents = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +89,15 @@ public class GameStateContoller : MonoBehaviour
                 // タイムアップ？
                 if(gameReverseCounter > GameReverseTimeMax)
                 {
-                    SceneManager.LoadScene("Title");
+                    int numOfExcellent = MainGameScore.excellent;
+                    if(numOfExcellent >= numberOfExcellents)
+                    {
+                        SceneManager.LoadScene("EndingExcellent");
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("EndingGood");
+                    }
                 }
             }
         }
@@ -106,7 +119,6 @@ public class GameStateContoller : MonoBehaviour
         if (isComboTerm)
         {
             comboCounter += Time.deltaTime;
-            Debug.Log(comboCounter);
             // コンボ終了？
             if (comboCounter > comboCounterMax)
             {
@@ -150,6 +162,9 @@ public class GameStateContoller : MonoBehaviour
     {
         Debug.Log("ComboNum:");
         Debug.Log(num);
+        Debug.Log(MainGameScore.good);
+        Debug.Log(MainGameScore.nice);
+        Debug.Log(MainGameScore.excellent);
         if (num >= ComboTermNumMax)
         {
             isComboTerm = true;

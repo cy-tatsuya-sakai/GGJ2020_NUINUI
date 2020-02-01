@@ -1585,12 +1585,17 @@ PrefabInstance:
     - target: {fileID: 348776549293662590, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
         type: 3}
       propertyPath: GameTimeMax
-      value: 120
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 348776549293662590, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
         type: 3}
       propertyPath: GameReverseTimeMax
-      value: 120
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 348776549293662590, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
+        type: 3}
+      propertyPath: numberOfExcellents
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6297883253830353228, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
         type: 3}
