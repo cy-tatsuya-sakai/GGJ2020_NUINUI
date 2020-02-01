@@ -42,7 +42,7 @@ public class GameStateContoller : MonoBehaviour
     float gameReverseCounter;
     float timeupCounter;
     [SerializeField, Header("タイムアップ表示時間")]
-    float timeupCounterMax = 2.0f;
+    float timeupCounterMax = 3.0f;
 
     // Combo Term Control
     bool isComboTerm;
