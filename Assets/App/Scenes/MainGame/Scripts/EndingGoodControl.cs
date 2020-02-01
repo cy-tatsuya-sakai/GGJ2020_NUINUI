@@ -23,7 +23,7 @@ public class EndingGoodControl : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                SceneManager.LoadScene("Title");
+                SceneManager.LoadScene("Credits");
             }
         }
 

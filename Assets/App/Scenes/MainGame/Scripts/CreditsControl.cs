@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EndingExcellentControl : MonoBehaviour
+public class CreditsControl : MonoBehaviour
 {
     [SerializeField, Header("キー入力待ち時間")]
     float WaitForInput = 2.0f;
@@ -22,7 +22,7 @@ public class EndingExcellentControl : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                SceneManager.LoadScene("Credits");
+                SceneManager.LoadScene("Title");
             }
         }
 
