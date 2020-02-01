@@ -18,9 +18,9 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Marker);
         if (Input.GetMouseButtonDown(0))
         {
+            transform.LookAt(Marker);
             Vector3 pos = gameObject.transform.position;
             distance_two = Vector3.Distance(pos, Marker.position);
             float present_Location = (Time.time * speed) / distance_two;
