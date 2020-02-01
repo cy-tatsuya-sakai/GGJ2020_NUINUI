@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using Lib.Sound;
 
 /// <summary>
 /// マチ針を結んでできた三角形
@@ -24,6 +25,8 @@ public class Patchwork : MonoBehaviour
     /// <param name="c"></param>
     public void Init(Vector3 a, Vector3 b, Vector3 c)
     {
+        SoundManager.Instance.SE.Play(_SE._TRIANGLE);
+
         // 仮
         a.z = -0.6f;
         b.z = -0.6f;

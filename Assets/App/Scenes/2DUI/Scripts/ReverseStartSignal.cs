@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Lib.Sound;
 using UnityEngine;
 
 public class ReverseStartSignal : MonoBehaviour
@@ -16,6 +17,7 @@ public class ReverseStartSignal : MonoBehaviour
     GameObject ObjReady;
     GameObject ObjStart;
     float SignalTimer;
+    float PrevSignalTimer;
 
     // Game Manager
     GameObject objGameManager;
@@ -23,6 +25,7 @@ public class ReverseStartSignal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.BGM.Stop();
         ObjReady = GameObject.Find("ReReady");
         ObjStart = GameObject.Find("ReGo");
 
@@ -30,6 +33,7 @@ public class ReverseStartSignal : MonoBehaviour
         ObjStart.SetActive(false);
 
         SignalTimer = 0;
+        PrevSignalTimer = 0;
 
         // Game Manager
         objGameManager = GameObject.Find("GameManager");
@@ -44,16 +48,28 @@ public class ReverseStartSignal : MonoBehaviour
 
         if (SignalTimer > timeStart)
         {
+            if(PrevSignalTimer <= timeStart)
+            {
+                SoundManager.Instance.BGM.PlayCrossFade(_BGM._TITLE_BGM);
+            }
             ObjReady.SetActive(false);
             ObjStart.SetActive(false);
         }
         else if (SignalTimer > timeDispGo)
         {
+            if(PrevSignalTimer <= timeDispGo)
+            {
+                SoundManager.Instance.Jingle.Play(_Jingle._GO);
+            }
             ObjReady.SetActive(false);
             ObjStart.SetActive(true);
         }
         else if (SignalTimer > timeDispReady)
         {
+            if(PrevSignalTimer <= timeDispReady)
+            {
+                SoundManager.Instance.Jingle.Play(_Jingle._LADY);
+            }
             ObjReady.SetActive(true);
             ObjStart.SetActive(false);
         }
@@ -68,6 +84,7 @@ public class ReverseStartSignal : MonoBehaviour
         bool isReverse = objGameManager.GetComponent<GameStateContoller>().IsReverse();
         if(isReverse)
         {
+            PrevSignalTimer = SignalTimer;
             SignalTimer += Time.deltaTime;
         }
     }

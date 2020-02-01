@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sourceFolder: Assets/Data/Sounds/Jingle
   _audioClipInfoList:
+  - key: GO
+    clip: {fileID: 8300000, guid: bc4300f3f85cf304d9236299e8ac27a9, type: 3}
+  - key: LADY
+    clip: {fileID: 8300000, guid: 40261aad69a27004081efdd029e048ee, type: 3}
   - key: A
     clip: {fileID: 8300000, guid: 08a3114e822a4c445ad6d5c59188cb1e, type: 3}
