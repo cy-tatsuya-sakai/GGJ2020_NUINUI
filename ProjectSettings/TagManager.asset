@@ -7,6 +7,7 @@ TagManager:
   - Cloth
   - RootPoint
   - Hole
+  - Enemy
   layers:
   - Default
   - TransparentFX
