@@ -23,6 +23,7 @@ public class GameStateContoller : MonoBehaviour
         Game,
         ReadyReverse,
         GameReverse,
+        Timeup,
     }
 
     // private
@@ -32,6 +33,9 @@ public class GameStateContoller : MonoBehaviour
     bool isReverse;
     float startReverseCounter;
     float gameReverseCounter;
+    float timeupCounter;
+    [SerializeField, Header("タイムアップ表示時間")]
+    float timeupCounterMax = 2.0f;
 
     // Combo Term Control
     bool isComboTerm;
@@ -44,6 +48,9 @@ public class GameStateContoller : MonoBehaviour
     int numberOfBadHoles = 2;
     [SerializeField, Header("Excellent EndになるExc.の数")]
     int numberOfExcellents = 20;
+    int numOfExcellent;
+    int numOfHoles;
+    GameObject objTimeup;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +64,12 @@ public class GameStateContoller : MonoBehaviour
 
         isComboTerm = false;
         comboCounter = 0.0f;
+
+        numOfExcellent = 0;
+        numOfHoles = 0;
+
+        objTimeup = GameObject.Find("Canvas Timeup");
+        objTimeup.SetActive(false);
     }
 
     // Update is called once per frame
@@ -89,15 +102,10 @@ public class GameStateContoller : MonoBehaviour
                 // タイムアップ？
                 if(gameReverseCounter > GameReverseTimeMax)
                 {
-                    int numOfExcellent = MainGameScore.excellent;
-                    if(numOfExcellent >= numberOfExcellents)
-                    {
-                        SceneManager.LoadScene("EndingExcellent");
-                    }
-                    else
-                    {
-                        SceneManager.LoadScene("EndingGood");
-                    }
+                    numOfExcellent = MainGameScore.excellent;
+                    numOfHoles = GetNumberOfHoles();
+                    gameStatus = GameStatus.Timeup;
+                    objTimeup.SetActive(true);
                 }
             }
         }
@@ -127,6 +135,27 @@ public class GameStateContoller : MonoBehaviour
 
                 // 敵を増やす
                 Instantiate(objEnemy, new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);
+            }
+        }
+
+        // Timeup Counter
+        if(gameStatus == GameStatus.Timeup)
+        {
+            timeupCounter += Time.deltaTime;
+            if (timeupCounter > timeupCounterMax)
+            {
+                if (numOfExcellent >= numberOfExcellents)
+                {
+                    SceneManager.LoadScene("EndingExcellent");
+                }
+                else if (numOfHoles <= numberOfBadHoles)
+                {
+                    SceneManager.LoadScene("EndingGood");
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndingBad");
+                }
             }
         }
     }
@@ -176,5 +205,13 @@ public class GameStateContoller : MonoBehaviour
     public bool IsReverse()
     {
         return isReverse;
+    }
+
+    // 穴の数を返す
+    int GetNumberOfHoles()
+    {
+        int holes = 0;
+
+        return holes;
     }
 }
