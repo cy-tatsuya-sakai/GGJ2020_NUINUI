@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/App/Scenes/HowToPlay.unity
     guid: 82cd7508ed4a2c54aacf559c284a44b1
+  - enabled: 1
+    path: Assets/App/Scenes/EndingGood.unity
+    guid: e299fcc289e564f4ba55eeb6b833e317
+  - enabled: 1
+    path: Assets/App/Scenes/EndingBad.unity
+    guid: 0d7841557aac32b49910453f7fead2dc
   m_configObjects: {}
