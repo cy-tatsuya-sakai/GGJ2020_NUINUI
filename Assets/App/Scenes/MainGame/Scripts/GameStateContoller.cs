@@ -7,6 +7,8 @@ public class GameStateContoller : MonoBehaviour
 {
     [SerializeField, Header("シーン開始からゲームが始まるまでの時間")]
     float WaitForGameStart = 4.0f;
+    [SerializeField, Header("裏シーン開始からエネミーが出現するまでの時間")]
+    float WaitForCreateEnemyReverse = 2.0f;
     [SerializeField, Header("表面の時間")]
     float GameTimeMax = 30;
     [SerializeField, Header("裏面の時間")]
@@ -31,6 +33,11 @@ public class GameStateContoller : MonoBehaviour
     float startCounter;
     float gameCounter;
     bool isReverse;
+    bool isCreatedEnemies;
+    [SerializeField, Header("再配置するエネミーの数")]
+    int numberOfEnemiesForReverse = 3;
+    [SerializeField, Header("再配置するエネミーの範囲")]
+    float createEnemySpan = 5.0f;
     float startReverseCounter;
     float gameReverseCounter;
     float timeupCounter;
@@ -59,6 +66,7 @@ public class GameStateContoller : MonoBehaviour
         startCounter = 0.0f;
         gameCounter = 0.0f;
         isReverse = false;
+        isCreatedEnemies = false;
         startReverseCounter = 0.0f;
         gameReverseCounter = 0.0f;
 
@@ -90,6 +98,16 @@ public class GameStateContoller : MonoBehaviour
             {
                 gameStatus = GameStatus.GameReverse;
             }
+
+            // エネミー生成
+            if(startReverseCounter > WaitForCreateEnemyReverse)
+            {
+                if (isCreatedEnemies == false)
+                {
+                    CreateEnemyForReverse();
+                    isCreatedEnemies = true;
+                }
+            }
         }
 
         // Game Counter
@@ -101,6 +119,8 @@ public class GameStateContoller : MonoBehaviour
             {
                 isReverse = true;
                 gameStatus = GameStatus.ReadyReverse;
+                // エネミーと穴と線をリセット
+                ResetGameObject();
             }
         }
         else if (gameStatus == GameStatus.GameReverse)
@@ -217,12 +237,56 @@ public class GameStateContoller : MonoBehaviour
     // エネミーと穴と線をリセット
     void ResetGameObject()
     {
+        // エネミーを消す
+        ResetEnemies();
+
+        // 穴を消す
+        ResetHoles();
+
+        // 線を消す
+        ResetLines();
+    }
+
+    // エネミーを消す
+    void ResetEnemies()
+    {
+        GameObject[] tagObjects;
+        tagObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject tagObj in tagObjects)
+        {
+            // 消す！
+            Destroy(tagObj);
+        }
+
+    }
+
+    // 穴を消す
+    void ResetHoles()
+    {
+        GameObject[] tagObjects;
+        tagObjects = GameObject.FindGameObjectsWithTag("Hole");
+        foreach (GameObject tagObj in tagObjects)
+        {
+            // 消す！
+            Destroy(tagObj);
+        }
+    }
+
+    // 線を消す
+    void ResetLines()
+    {
 
     }
 
     // エネミー再配置
     void CreateEnemyForReverse()
     {
-
+        for(int i=0; i<numberOfEnemiesForReverse;++i)
+        {
+            float x = Random.RandomRange(-createEnemySpan, createEnemySpan);
+            float y = Random.RandomRange(-createEnemySpan, createEnemySpan);
+            // 敵を増やす
+            Instantiate(objEnemy, new Vector3(x, y, -1.0f), Quaternion.identity);
+        }
     }
 }
