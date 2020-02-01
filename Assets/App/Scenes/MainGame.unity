@@ -949,11 +949,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8964444692944191982, guid: 15e41a2de4de4ff43920f8885424dc3a,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8964444692944191983, guid: 15e41a2de4de4ff43920f8885424dc3a,
         type: 3}
       propertyPath: Marker
@@ -1342,7 +1337,7 @@ PrefabInstance:
     - target: {fileID: 8261734463660685783, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0016508102
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8261734463660685783, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
         type: 3}
