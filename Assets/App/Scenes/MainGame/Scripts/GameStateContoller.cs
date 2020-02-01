@@ -87,6 +87,12 @@ public class GameStateContoller : MonoBehaviour
             if (gameStatus == GameStatus.Game)
             {
                 gameCounter += Time.deltaTime;
+                // 裏になる？
+                if(gameCounter > GameTimeMax)
+                {
+                    isReverse = true;
+                    gameStatus = GameStatus.ReadyReverse;
+                }
             }
         }
 
