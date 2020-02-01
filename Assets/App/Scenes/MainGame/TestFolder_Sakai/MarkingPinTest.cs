@@ -15,12 +15,18 @@ public class MarkingPinTest : MonoBehaviour
 
     private StateMachine _state;
 
+    // Game Manager
+    GameObject objGameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         _markingPinManager = Instantiate(_markingPinManagerPrefab);
         _scorePopupManager = Instantiate(_scorePopupManagerPrefab);
         _state = new StateMachine(State_Normal);
+
+        // Game Manager
+        objGameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -50,7 +56,10 @@ public class MarkingPinTest : MonoBehaviour
                 {
                     var list = _markingPinManager.ExecPatchwork();
                     int num = list.Count;
-                    for(int i = 0; i < num; i++)
+                    // Game Manager
+                    objGameManager.GetComponent<GameStateContoller>().SetComboTerm(num);
+
+                    for (int i = 0; i < num; i++)
                     {
                         _scorePopupManager.PopupScore(100/*適当。後で文字になるかもとのこと*/, list[i].transform.position, _cam);
                         Destroy(list[i].gameObject);
