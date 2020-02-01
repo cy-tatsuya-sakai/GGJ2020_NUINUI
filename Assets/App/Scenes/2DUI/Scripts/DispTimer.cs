@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DispTimer : MonoBehaviour
 {
-    public Text text;
+    public TextMeshProUGUI text;
 
     GameObject objGameManager;
 
