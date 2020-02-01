@@ -27,5 +27,15 @@ public class MarkingPinTest : MonoBehaviour
 
             _markingPinManager.CreatePatchwork();
         }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            var list = _markingPinManager.ExecPatchwork();
+            int num = list.Count;
+            for(int i = 0; i < num; i++)
+            {
+                Destroy(list[i].gameObject);
+            }
+        }
     }
 }

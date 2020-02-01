@@ -106,4 +106,26 @@ public class MarkingPinManager : MonoBehaviour
 
         return _markingPinList[idx];
     }
+
+    /// <summary>
+    /// パッチワークを実行。衝突した敵とか穴とかを返す
+    /// </summary>
+    public List<EnemyCollision> ExecPatchwork()
+    {
+        List<EnemyCollision> enemyList = new List<EnemyCollision>();
+        foreach(var patchwork in _patchworkList)
+        {
+            enemyList.AddRange(patchwork.CollisionEnemy());
+        }
+
+        int num = _patchworkList.Count;
+        for(int i = 0; i < num; i++)
+        {
+            Destroy(_patchworkList[i].gameObject);
+        }
+        _patchworkList.Clear();
+
+        enemyList.Distinct();
+        return enemyList;
+    }
 }
