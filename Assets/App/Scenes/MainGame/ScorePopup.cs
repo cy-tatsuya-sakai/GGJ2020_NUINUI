@@ -14,6 +14,8 @@ public class ScorePopup : MonoBehaviour
     private static Color[] comboColor;
     private static readonly float[] comboScale = new float[] { 1.0f, 1.2f, 1.5f };
 
+    [SerializeField] private GameObject _particlePrefab;
+
     private static readonly string[] comboSE = new string[]
     {
         _SE._COMBO1,
@@ -60,6 +62,18 @@ public class ScorePopup : MonoBehaviour
         else
         {
             MainGameScore.excellent++;
+
+            float a = 1920.0f / 1080.0f;
+            float y = 26.0f;
+            float x = y * a;
+            for(int i = 0; i < 10; i++)
+            {
+                var pos = new Vector3(Random.Range(-x, x), Random.Range(-y, y), 0.0f);
+                if(Mathf.Abs(pos.x) < 20.0f) { pos.x = Mathf.Sign(x) * 20.0f; }
+                if(Mathf.Abs(pos.y) < 10.0f) { pos.y = Mathf.Sign(y) * 10.0f; }
+                var obj = Instantiate(_particlePrefab, pos, Quaternion.identity);
+                Destroy(obj.gameObject, 1.0f);
+            }
         }
 
         _text.text = comboName[Mathf.Clamp(comboCount, 0, comboName.Length - 1)];
@@ -68,7 +82,7 @@ public class ScorePopup : MonoBehaviour
         float scale = comboScale[Mathf.Clamp(comboCount, 0, comboScale.Length - 1)];
         transform.DOMoveY(transform.position.y + 50.0f, 0.1f);
         transform.localScale = Vector3.zero;
-        transform.DOScale(Vector3.one * scale, 0.1f);
+        transform.DOScale(Vector3.one * scale * 0.75f, 0.1f);
         Destroy(gameObject, 1.5f);
     }
 }
