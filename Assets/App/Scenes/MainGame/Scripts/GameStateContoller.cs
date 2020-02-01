@@ -116,13 +116,15 @@ public class GameStateContoller : MonoBehaviour
     // タイマー参照
     public float GetGameCounter()
     {
-        return gameCounter;
+        float remainCounter = GameTimeMax - gameCounter;
+        return remainCounter;
     }
 
     // 裏面タイマー参照
-    public float GetReverseGameCounter()
+    public float GetGameReverseCounter()
     {
-        return gameReverseCounter;
+        float remainCounter = GameReverseTimeMax - gameReverseCounter;
+        return remainCounter;
     }
 
     // コンボ期間中？
