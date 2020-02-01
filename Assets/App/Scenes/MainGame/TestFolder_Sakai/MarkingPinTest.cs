@@ -27,6 +27,7 @@ public class MarkingPinTest : MonoBehaviour
 
         // Game Manager
         objGameManager = GameObject.Find("GameManager");
+        objGameManager.GetComponent<GameStateContoller>().SetMarkingPinManager(_markingPinManager);
     }
 
     // Update is called once per frame

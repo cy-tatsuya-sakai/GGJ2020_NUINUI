@@ -59,6 +59,9 @@ public class GameStateContoller : MonoBehaviour
     int numOfHoles;
     GameObject objTimeup;
 
+    // for delete lines
+    MarkingPinManager markingPinManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -275,7 +278,13 @@ public class GameStateContoller : MonoBehaviour
     // 線を消す
     void ResetLines()
     {
+        markingPinManager.ExecPatchwork();
+    }
 
+    // 先の元を設定
+    public void SetMarkingPinManager(MarkingPinManager marking)
+    {
+        markingPinManager = marking;
     }
 
     // エネミー再配置
