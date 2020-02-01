@@ -4,36 +4,38 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private Ray ray; //レイ
-    private RaycastHit hit; //ヒットしたオブジェクト情報
+    private Ray _ray;
+    //ヒットしたオブジェクト情報
+    private RaycastHit _hit;
     [SerializeField] private float raydis;
-    private bool rayHit;
+    //rayがオブジェクト(服)に当たっているかの判定
+    private bool _rayHit;
 
-    //Enemyの移動ポイント
     [SerializeField,Header("Enemyの移動ポイント")] private GameObject[] rootPoints;
-    //Enemyの移動速度
     [SerializeField, Header("Enemyの移動速度")] private float speed;
-    public int canNotGoRootNum;
-    public int beforeRootNum;
-    public int rootNum;
+    private int _rootNum, _beforeRootNum, _canNotGoRootNum;
 
-    public bool stop;
+    private bool _moveStop;
 
-    public float randomTime;
+    private float _timer, _randomTime;
 
     [SerializeField,Header("穴オブジェクト")] private GameObject hole;
+    [SerializeField] private GameObject testHoleObj;
     private bool instance;
+
+    [SerializeField,Header("Enemyの移動再開時間")] private int reStartTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        rayHit = true;
-        rootNum = Random.Range(0, rootPoints.Length);
+        _rayHit = true;
+        _rootNum = Random.Range(0, rootPoints.Length);
+        _randomTime = Random.Range(0.0f, 5.0f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject)
+        if (other.CompareTag("RootPoint"))
         {
             RootSetting(1);
         }
@@ -44,31 +46,40 @@ public class Enemy : MonoBehaviour
     {
         var enemyPos = transform.position;
 
-        ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
+        _ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
         //Rayがhitしなかったら移動先を再設定
-        if (Physics.Raycast(ray, out hit, raydis) == false)
+        if (Physics.Raycast(_ray, out _hit, raydis) == false)
         {
             RootSetting(2);
         }
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raydis, Color.red);
 
-        var timer = 0.0f;
-        timer += Time.deltaTime;
-
-        if (stop)
+        //タイマー開始
+        _timer += Time.deltaTime;
+        //タイマーがrandomTimeを超えていたら移動停止
+        if(_timer >= _randomTime)
         {
-            //Enemyの動きを停止
-            transform.position = enemyPos;
-            if (instance == false)
-            {
-                CreateHole(enemyPos);
-            }
+            _moveStop = true;
         }
-        else
+
+        switch (_moveStop)
         {
-            //rootPointに向けてEnemyを移動
-            transform.position = Vector3.MoveTowards(transform.position, rootPoints[rootNum].transform.position, speed * Time.deltaTime);
-            instance = false;
+            case true:
+                //Enemyの動きを停止
+                transform.position = enemyPos;
+
+                //穴を生成
+                if (instance == false)
+                {
+                    CreateHole(enemyPos);
+                }
+                break;
+
+            case false:
+                //rootPointに向けてEnemyを移動
+                transform.position = Vector3.MoveTowards(transform.position, rootPoints[_rootNum].transform.position, speed * Time.deltaTime);
+                instance = false;
+                break;
         }
     }
 
@@ -77,34 +88,36 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case 1:
-                beforeRootNum = rootNum;
-                rootNum = Random.Range(0, rootPoints.Length);
+                _beforeRootNum = _rootNum;
+                _rootNum = Random.Range(0, rootPoints.Length);
 
-                switch (rayHit)
+                switch (_rayHit)
                 {
                     case true:
                         //rootNumがひとつ前と同じだったら再度乱数設定
-                        while (rootNum == beforeRootNum)
+                        while (_rootNum == _beforeRootNum)
                         {
-                            rootNum = Random.Range(0, rootPoints.Length);
+                            _rootNum = Random.Range(0, rootPoints.Length);
                         }
                         break;
 
                     case false:
                         //rootNumがひとつ前と同じかつ行けないrootPointだったら再度乱数設定
-                        while (rootNum == beforeRootNum || rootNum == canNotGoRootNum)
+                        while (_rootNum == _beforeRootNum || _rootNum == _canNotGoRootNum)
                         {
-                            rootNum = Random.Range(0, rootPoints.Length);
-                            rayHit = true;
+                            _rootNum = Random.Range(0, rootPoints.Length);
+                            _rayHit = true;
                         }
                         break;
                 }
                 break;
 
             case 2:
-                rayHit = false;
-                canNotGoRootNum = rootNum;
-                rootNum = beforeRootNum;
+                _rayHit = false;
+                //そのrootPointには次の移動では行けないようにする
+                _canNotGoRootNum = _rootNum;
+                //ひとつ前のrootPointに戻る
+                _rootNum = _beforeRootNum;
                 break;
         }
     }
@@ -112,7 +125,20 @@ public class Enemy : MonoBehaviour
     void CreateHole(Vector3 enemyPos)
     {
         var createHole = Instantiate(hole);
+        createHole.transform.parent = testHoleObj.transform;
         createHole.transform.position = new Vector3(enemyPos.x, enemyPos.y, enemyPos.z);
         instance = true;
+        //n秒後にEnemyの移動を再開
+        Invoke("ReStartEnemy", reStartTime);
+    }
+
+    void ReStartEnemy()
+    {
+        Debug.Log("ReStart");
+        //タイマーをリセット
+        _timer = 0.0f;
+        _randomTime = Random.Range(3.0f, 10.0f);
+        //移動開始
+        _moveStop = false;
     }
 }

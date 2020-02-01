@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3847922047982266231}
   - component: {fileID: 3847922047982266228}
   - component: {fileID: 3847922047982266229}
-  - component: {fileID: 3847922047982266226}
   - component: {fileID: 3847922047982266230}
-  - component: {fileID: 3847922047982266185}
+  - component: {fileID: 969763804678136493}
+  - component: {fileID: 6047039945879732744}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3847922047982266227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,19 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3847922047982266226
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3847922047982266227}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3847922047982266230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,13 +105,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   speed: 5
-  canNotGoRootNum: 0
-  beforeRootNum: 0
-  rootNum: 0
-  stop: 0
-  randomTime: 0
   hole: {fileID: 6291912706085539509, guid: 4116ec5beaeff5f46a2f4c639d95b766, type: 3}
---- !u!54 &3847922047982266185
+  reStartTime: 2
+--- !u!65 &969763804678136493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847922047982266227}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6047039945879732744
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
