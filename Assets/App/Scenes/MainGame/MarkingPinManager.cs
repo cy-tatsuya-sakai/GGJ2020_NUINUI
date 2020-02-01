@@ -135,7 +135,7 @@ public class MarkingPinManager : MonoBehaviour
         }
         _patchworkList.Clear();
 
-        enemyList.Distinct();
+        enemyList = enemyList.Distinct().ToList();
         return enemyList;
     }
 }
