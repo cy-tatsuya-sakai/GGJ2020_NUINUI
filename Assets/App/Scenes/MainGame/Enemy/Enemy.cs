@@ -127,10 +127,9 @@ public class Enemy : MonoBehaviour
     void CreateHole(Vector3 enemyPos)
     {
         var createHole = Instantiate(hole);
-        //createHole.transform.parent = testHoleObj.transform;
-        createHole.transform.parent = transform;
         createHole.transform.position = new Vector3(enemyPos.x, enemyPos.y, -0.55f);
         instance = true;
+        Invoke("ReStartEnemy", 3.0f);
     }
 
     public void ReStartEnemy()
