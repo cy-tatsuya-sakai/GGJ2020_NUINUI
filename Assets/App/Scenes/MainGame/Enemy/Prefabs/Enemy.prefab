@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3847922047982266228}
   - component: {fileID: 3847922047982266229}
   - component: {fileID: 3847922047982266230}
+  - component: {fileID: 3610194816342408163}
   - component: {fileID: 445895380410598111}
   - component: {fileID: 982257726084697089}
   m_Layer: 0
@@ -101,8 +102,21 @@ MonoBehaviour:
   _beforeRootNum: 0
   _canNotGoRootNum: 0
   moveStop: 0
+  reStart: 0
   hole: {fileID: 6291912706085539509, guid: 4116ec5beaeff5f46a2f4c639d95b766, type: 3}
   reStartTime: 2
+--- !u!114 &3610194816342408163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847922047982266227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e34210424657ad4f88505b66fedeef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &445895380410598111
 BoxCollider2D:
   m_ObjectHideFlags: 0
