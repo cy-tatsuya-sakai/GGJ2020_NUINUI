@@ -19,7 +19,16 @@ public class DispTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float counter = objGameManager.GetComponent<GameStateContoller>().GetGameCounter();
+        bool isReverse = objGameManager.GetComponent<GameStateContoller>().IsReverse();
+        float counter;
+        if(isReverse)
+        {
+            counter = objGameManager.GetComponent<GameStateContoller>().GetGameReverseCounter();
+        }
+        else
+        {
+            counter = objGameManager.GetComponent<GameStateContoller>().GetGameCounter();
+        }
         int counterInt = (int)counter;
         text.text = "Timer:" + counterInt.ToString();
     }
