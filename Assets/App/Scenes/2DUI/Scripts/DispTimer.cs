@@ -19,6 +19,7 @@ public class DispTimer : MonoBehaviour
     void Update()
     {
         float counter = objGameManager.GetComponent<GameStateContoller>().GetGameCounter();
-        text.text = "Text";
+        int counterInt = (int)counter;
+        text.text = "Timer:" + counterInt.ToString();
     }
 }
