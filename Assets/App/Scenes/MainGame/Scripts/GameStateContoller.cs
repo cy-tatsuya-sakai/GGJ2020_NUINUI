@@ -90,7 +90,7 @@ public class GameStateContoller : MonoBehaviour
     }
 
     // コンボ期間に入ります
-    public void SetComboTerm()
+    public void SetComboTerm(int num)
     {
         isComboTerm = true;
         comboCounter = 0.0f;
