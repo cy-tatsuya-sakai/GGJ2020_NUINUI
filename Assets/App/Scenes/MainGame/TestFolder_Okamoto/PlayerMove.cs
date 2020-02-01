@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    Camera cam;
     public Transform Marker;
-    public GameObject _markingPinPrefab;
+    private float distance_two;
+    public float speed = 1.0F;
 
     // Start is called before the first frame update
     void Start()
@@ -17,14 +19,12 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         transform.LookAt(Marker);
-        
-    }
-
-   
-
-    public void Move()
-    {
-        Vector3 Pinpos = _markingPinPrefab.transform.position;
-        gameObject.transform.position = Pinpos;
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 pos = gameObject.transform.position;
+            distance_two = Vector3.Distance(pos, Marker.position);
+            float present_Location = (Time.time * speed) / distance_two;
+            transform.position = Vector3.Lerp(pos, Marker.position, present_Location);
+        }
     }
 }
