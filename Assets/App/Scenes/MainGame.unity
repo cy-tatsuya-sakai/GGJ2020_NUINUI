@@ -2239,6 +2239,12 @@ PrefabInstance:
       propertyPath: Marker
       value: 
       objectReference: {fileID: 1554415825}
+    - target: {fileID: 8279720785517891522, guid: 304b21653bc64544c909a3f19ce223a4,
+        type: 3}
+      propertyPath: Light
+      value: 
+      objectReference: {fileID: 3103641960869055927, guid: 4f6a6cb83791a6e41a13614f4a67df5f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 304b21653bc64544c909a3f19ce223a4, type: 3}
 --- !u!1001 &8347475396237813838
