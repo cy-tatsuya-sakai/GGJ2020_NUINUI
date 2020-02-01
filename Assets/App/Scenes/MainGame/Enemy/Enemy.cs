@@ -9,15 +9,15 @@ public class Enemy : MonoBehaviour
     private RaycastHit _hit;
     [SerializeField] private float raydis;
     //rayがオブジェクト(服)に当たっているかの判定
-    private bool _rayHit;
+    public bool _rayHit;
 
     [SerializeField,Header("Enemyの移動ポイント")] private GameObject[] rootPoints;
     [SerializeField, Header("Enemyの移動速度")] private float speed;
     private int _rootNum, _beforeRootNum, _canNotGoRootNum;
 
-    private bool _moveStop;
+    public bool moveStop;
 
-    private float _timer, _randomTime;
+    public float _timer, _randomTime;
 
     [SerializeField,Header("穴オブジェクト")] private GameObject hole;
     [SerializeField] private GameObject testHoleObj;
@@ -29,7 +29,9 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _rayHit = true;
+        //移動地点の設定
         _rootNum = Random.Range(0, rootPoints.Length);
+        //穴生成時間の設定
         _randomTime = Random.Range(0.0f, 5.0f);
     }
 
@@ -59,10 +61,10 @@ public class Enemy : MonoBehaviour
         //タイマーがrandomTimeを超えていたら移動停止
         if(_timer >= _randomTime)
         {
-            _moveStop = true;
+            moveStop = true;
         }
 
-        switch (_moveStop)
+        switch (moveStop)
         {
             case true:
                 //Enemyの動きを停止
@@ -125,20 +127,18 @@ public class Enemy : MonoBehaviour
     void CreateHole(Vector3 enemyPos)
     {
         var createHole = Instantiate(hole);
-        createHole.transform.parent = testHoleObj.transform;
-        createHole.transform.position = new Vector3(enemyPos.x, enemyPos.y, enemyPos.z);
+        //createHole.transform.parent = testHoleObj.transform;
+        createHole.transform.parent = transform;
+        createHole.transform.position = new Vector3(enemyPos.x, enemyPos.y, -0.55f);
         instance = true;
-        //n秒後にEnemyの移動を再開
-        Invoke("ReStartEnemy", reStartTime);
     }
 
-    void ReStartEnemy()
+    public void ReStartEnemy()
     {
-        Debug.Log("ReStart");
         //タイマーをリセット
         _timer = 0.0f;
-        _randomTime = Random.Range(3.0f, 10.0f);
+        _randomTime = Random.Range(3.0f, 5.0f);
         //移動開始
-        _moveStop = false;
+        moveStop = false;
     }
 }
