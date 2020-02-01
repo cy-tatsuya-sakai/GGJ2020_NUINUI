@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cloth
   - RootPoint
+  - Hole
   layers:
   - Default
   - TransparentFX
