@@ -12,18 +12,20 @@ public class Enemy : MonoBehaviour
     public bool _rayHit;
 
     //Enemyの移動ポイント
-    private List<GameObject> enemyRoots;
+    [SerializeField] private List<GameObject> enemyRoots;
     [SerializeField, Header("Enemyの移動速度")] private float speed;
     public int _rootNum, _beforeRootNum, _canNotGoRootNum;
 
     public bool moveStop, reStart;
 
-    private float _timer, _randomTime;
+    public float _timer, _randomTime, _sibireTimer;
 
     [SerializeField,Header("穴オブジェクト")] private GameObject hole;
     private bool instance;
 
     [SerializeField,Header("Enemyの移動再開時間")] private int reStartTime;
+
+    [SerializeField] private bool restartReset;
 
     // Game Manager
     GameObject objGameManager;
@@ -47,6 +49,8 @@ public class Enemy : MonoBehaviour
         _randomTime = Random.Range(0.0f, 5.0f);
         // Game Manager
         objGameManager = GameObject.Find("GameManager");
+
+        restartReset = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -70,39 +74,65 @@ public class Enemy : MonoBehaviour
         }
         //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raydis, Color.red);
 
-        //タイマー開始
-        _timer += Time.deltaTime;
-        //タイマーがrandomTimeを超えていたら移動停止
-        if(_timer >= _randomTime)
+        if (reStart)
         {
-            moveStop = true;
+            if(restartReset == false)
+            {
+                _sibireTimer = 5.0f;
+                restartReset = true;
+            }
+
+            transform.position = enemyPos;
+            _sibireTimer -= Time.deltaTime;
+            Debug.Log(_sibireTimer);
+
+           if (_sibireTimer >= 0.0f)
+            {
+                enemyPos = transform.position;
+            }
+            else
+            {
+                restartReset = false;
+                reStart = false;
+                //ReStartEnemy();
+            }
         }
-
-        switch (moveStop)
+        else
         {
-            case true:
-                //Enemyの動きを停止
-                transform.position = enemyPos;
+            //タイマー開始
+            _timer += Time.deltaTime;
+            //タイマーがrandomTimeを超えていたら移動停止
+            if (_timer >= _randomTime)
+            {
+                moveStop = true;
+            }
 
-                //穴を生成
-                bool isComboTerm = objGameManager.GetComponent<GameStateContoller>().IsComboTerm();
-                if (instance == false && isComboTerm == false)
-                {
-                    CreateHole(enemyPos);
-                }
-                break;
+            switch (moveStop)
+            {
+                case true:
+                    //Enemyの動きを停止
+                    transform.position = enemyPos;
 
-            case false:
-                //rootPointに向けてEnemyを移動
-                transform.position = Vector3.MoveTowards(transform.position, enemyRoots[_rootNum].transform.position, speed * Time.deltaTime);
-                instance = false;
+                    //穴を生成
+                    bool isComboTerm = objGameManager.GetComponent<GameStateContoller>().IsComboTerm();
+                    if (instance == false && isComboTerm == false)
+                    {
+                        CreateHole(enemyPos);
+                    }
+                    break;
 
-                //もしEnemyの動きが止まってしまっていたらルートを再設定
-                if(_timer >= _randomTime && transform.position == enemyRoots[_rootNum].transform.position)
-                {
-                    RootSetting(1);
-                }
-                break;
+                case false:
+                    //rootPointに向けてEnemyを移動
+                    transform.position = Vector3.MoveTowards(transform.position, enemyRoots[_rootNum].transform.position, speed * Time.deltaTime);
+                    instance = false;
+
+                    //もしEnemyの動きが止まってしまっていたらルートを再設定
+                    if (_timer >= _randomTime && transform.position == enemyRoots[_rootNum].transform.position)
+                    {
+                        RootSetting(1);
+                    }
+                    break;
+            }
         }
     }
 
@@ -112,7 +142,23 @@ public class Enemy : MonoBehaviour
         {
             case 1:
                 _beforeRootNum = _rootNum;
-                _rootNum = Random.Range(0, enemyRoots.Count);
+
+                int max = enemyRoots.Count;
+                int[] box = new int[max];
+
+                int index = 0;
+                for(int i = 0; i < max; i++)
+                {
+                    if(i != _rootNum)
+                    {
+                        box[index] = i;
+                        index++;
+                    }
+                }
+
+                var setNum = Random.Range(0, enemyRoots.Count - 1);
+                _rootNum = box[setNum];
+                /*
 
                 switch (_rayHit)
                 {
@@ -133,6 +179,7 @@ public class Enemy : MonoBehaviour
                         }
                         break;
                 }
+                */
                 break;
 
             case 2:
@@ -153,7 +200,8 @@ public class Enemy : MonoBehaviour
         Invoke("ReStartEnemy", 3.0f);
     }
 
-    public void ReStartEnemy()
+
+    void ReStartEnemy()
     {
         //タイマーをリセット
         _timer = 0.0f;

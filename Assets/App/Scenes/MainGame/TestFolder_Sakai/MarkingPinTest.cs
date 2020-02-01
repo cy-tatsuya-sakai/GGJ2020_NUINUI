@@ -63,7 +63,21 @@ public class MarkingPinTest : MonoBehaviour
                     for (int i = 0; i < num; i++)
                     {
                         _scorePopupManager.PopupScore(100/*適当。後で文字になるかもとのこと*/, list[i].transform.position, _cam);
-                        Destroy(list[i].gameObject);
+
+                        //Enemyが三角形に入っていたら動きを一時停止
+                        if (list[i].gameObject.GetComponent<Enemy>())
+                        {
+                            var enemyScr = list[i].gameObject.GetComponent<Enemy>();
+                                if (enemyScr.reStart == false)
+                                {
+                                    enemyScr.reStart = true;
+                                }    
+                            }
+                            
+                        else
+                        {
+                            Destroy(list[i].gameObject);
+                        }
                     }
                 }
             }
