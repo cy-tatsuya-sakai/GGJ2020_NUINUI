@@ -25,7 +25,7 @@ public class DispTimer : MonoBehaviour
         {
             counter = objGameManager.GetComponent<GameStateContoller>().GetGameReverseCounter();
             int counterInt = (int)counter;
-            text.text = "RTimer:" + counterInt.ToString();
+            text.text = "ReTimer:" + counterInt.ToString();
         }
         else
         {
