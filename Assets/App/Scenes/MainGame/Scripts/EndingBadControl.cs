@@ -22,7 +22,7 @@ public class EndingBadControl : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                SceneManager.LoadScene("Title");
+                SceneManager.LoadScene("Credits");
             }
         }
 
