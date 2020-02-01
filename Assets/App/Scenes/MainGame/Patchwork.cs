@@ -23,6 +23,11 @@ public class Patchwork : MonoBehaviour
     /// <param name="c"></param>
     public void Init(Vector3 a, Vector3 b, Vector3 c)
     {
+        // 仮
+        a.z = -0.6f;
+        b.z = -0.6f;
+        c.z = -0.6f;
+        //
         line1.transform.position = a;
         line2.transform.position = b;
         line3.transform.position = c;
