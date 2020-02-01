@@ -7,7 +7,9 @@ public class GameStateContoller : MonoBehaviour
     [SerializeField, Header("シーン開始からゲームが始まるまでの時間")]
     float WaitForGameStart = 4.0f;
     [SerializeField, Header("表面の時間")]
-    float GameTimeMax;
+    float GameTimeMax = 120;
+    [SerializeField, Header("裏面の時間")]
+    float GameReverseTimeMax = 120;
     [SerializeField, Header("コンボ期間に入るコンボ数")]
     int ComboTermNumMax = 3;
     [SerializeField, Header("エネミーPrefab")]
@@ -26,6 +28,9 @@ public class GameStateContoller : MonoBehaviour
     GameStatus gameStatus;
     float startCounter;
     float gameCounter;
+    bool isReverse;
+    float startReverseCounter;
+    float gameReverseCounter;
 
     // Combo Term Control
     bool isComboTerm;
@@ -40,6 +45,9 @@ public class GameStateContoller : MonoBehaviour
         gameStatus = GameStatus.Ready;
         startCounter = 0.0f;
         gameCounter = 0.0f;
+        isReverse = false;
+        startReverseCounter = 0.0f;
+        gameReverseCounter = 0.0f;
 
         isComboTerm = false;
         comboCounter = 0.0f;
@@ -49,17 +57,37 @@ public class GameStateContoller : MonoBehaviour
     void Update()
     {
         // Start Counter
-        startCounter += Time.deltaTime;
-        if(startCounter > WaitForGameStart)
+        if(isReverse)
         {
-            gameStatus = GameStatus.Game;
+            startReverseCounter += Time.deltaTime;
+            if (startReverseCounter > WaitForGameStart)
+            {
+                gameStatus = GameStatus.GameReverse;
+            }
+        }
+        else
+        {
+            startCounter += Time.deltaTime;
+            if (startCounter > WaitForGameStart)
+            {
+                gameStatus = GameStatus.Game;
+            }
         }
 
         // Game Counter
-        if( gameStatus == GameStatus.Game
-            || gameStatus == GameStatus.GameReverse)
+        if(isReverse)
         {
-            gameCounter += Time.deltaTime;
+            if (gameStatus == GameStatus.GameReverse)
+            {
+                gameReverseCounter += Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (gameStatus == GameStatus.Game)
+            {
+                gameCounter += Time.deltaTime;
+            }
         }
 
         // Combo Counter
@@ -91,6 +119,12 @@ public class GameStateContoller : MonoBehaviour
         return gameCounter;
     }
 
+    // 裏面タイマー参照
+    public float GetReverseGameCounter()
+    {
+        return gameReverseCounter;
+    }
+
     // コンボ期間中？
     public bool IsComboTerm()
     {
@@ -107,5 +141,11 @@ public class GameStateContoller : MonoBehaviour
             isComboTerm = true;
             comboCounter = 0.0f;
         }
+    }
+
+    // 裏面ですか？
+    public bool IsReverse()
+    {
+        return isReverse;
     }
 }
