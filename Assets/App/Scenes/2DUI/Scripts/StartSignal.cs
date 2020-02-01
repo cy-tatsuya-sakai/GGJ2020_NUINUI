@@ -6,11 +6,12 @@ public class StartSignal : MonoBehaviour
 {
     // 編集可能
     [SerializeField,Header("Readyが表示されるまでの時間")]
-    float CounterForDisplayReady = 0.5f;
+    float CounterForDisplayReady = 1.0f;
     [SerializeField, Header("ReadyからGoが表示されるまでの時間")]
-    float CounterForDisplayGo = 1.0f;
+    float CounterForDisplayGo = 2.0f;
     [SerializeField, Header("Goからゲームが始まるまでの時間")]
-    float CounterForGameStart = 0.5f;
+    float CounterForGameStart = 1.0f;
+
 
 
     // private
