@@ -13,6 +13,7 @@ public class StartSignal : MonoBehaviour
     float CounterForGameStart = 1.0f;
 
 
+
     // private
     GameObject ObjReady;
     GameObject ObjStart;
