@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 /// <summary>
 /// なんかマチ針を保持。三角形を作るためのリスト。その他計算
@@ -62,7 +63,11 @@ public class MarkingPinManager : MonoBehaviour
 
     private void CreatePatchwork_(Vector3 a, Vector3 b, Vector3 c)
     {
-        var obj = Instantiate(_patchworkPrefab);
+        Vector3 pos = (a + b + c) / 3.0f;
+        a = a - pos;
+        b = b - pos;
+        c = c - pos;
+        var obj = Instantiate(_patchworkPrefab, pos, Quaternion.identity);
         obj.transform.SetParent(transform);
         _patchworkList.Add(obj);
         obj.Init(a, b, c);
@@ -121,7 +126,8 @@ public class MarkingPinManager : MonoBehaviour
         int num = _patchworkList.Count;
         for(int i = 0; i < num; i++)
         {
-            Destroy(_patchworkList[i].gameObject);
+            _patchworkList[i].transform.DOScale(new Vector3(0.0f, 0.0f, 1.0f), 0.25f).SetEase(Ease.InBack);
+            Destroy(_patchworkList[i].gameObject, 1.0f);
         }
         _patchworkList.Clear();
 
