@@ -158,6 +158,13 @@ public class Enemy : MonoBehaviour
 
                 var setNum = Random.Range(0, enemyRoots.Count - 1);
                 _rootNum = box[setNum];
+                if(_beforeRootNum == _rootNum)
+                {
+                    Debug.Log("Same Value. _rootNum _beforeRootNum");
+                    Debug.Log(_beforeRootNum);
+                    Debug.Log(_rootNum);
+
+                }
                 /*
 
                 switch (_rayHit)
