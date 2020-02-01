@@ -6,12 +6,14 @@ public class MarkingPinTest : MonoBehaviour
 {
     [SerializeField] private Camera _cam;
     [SerializeField] private GameObject testObj;
-    [SerializeField] private MarkingPinManager _markingPinManager;
+    [SerializeField] private MarkingPinManager _markingPinManagerPrefab;
+
+    private MarkingPinManager _markingPinManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _markingPinManager = Instantiate(_markingPinManagerPrefab);
     }
 
     // Update is called once per frame
