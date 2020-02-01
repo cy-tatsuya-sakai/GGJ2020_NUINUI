@@ -65,10 +65,13 @@ public class GameStateContoller : MonoBehaviour
         {
             comboCounter += Time.deltaTime;
             Debug.Log(comboCounter);
+            // コンボ終了？
             if (comboCounter > comboCounterMax)
             {
                 comboCounter = 0.0f;
                 isComboTerm = false;
+
+                // ToDo:敵を増やす
             }
         }
     }
