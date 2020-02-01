@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour
     //rayがオブジェクト(服)に当たっているかの判定
     public bool _rayHit;
 
-    [SerializeField,Header("Enemyの移動ポイント")] private GameObject[] rootPoints;
+    //Enemyの移動ポイント
+    private List<GameObject> enemyRoots;
+    //[SerializeField,Header("Enemyの移動ポイント")] private GameObject[] rootPoints;
     [SerializeField, Header("Enemyの移動速度")] private float speed;
     public int _rootNum, _beforeRootNum, _canNotGoRootNum;
 
@@ -24,19 +26,23 @@ public class Enemy : MonoBehaviour
 
     [SerializeField,Header("Enemyの移動再開時間")] private int reStartTime;
 
-    // Game Manager
-    GameObject objGameManager;
-
     // Start is called before the first frame update
     void Start()
     {
+        enemyRoots = new List<GameObject>();
+        //EnemyRootを取得
+        var enemyRoot = GameObject.Find("EnemyRoot");
+        //EnemyRootの子オブジェクトを全取得、配列に格納
+        foreach (Transform childTransform in enemyRoot.transform)
+        {
+            enemyRoots.Add(childTransform.gameObject);
+        }
+
         _rayHit = true;
         //移動地点の設定
-        _rootNum = Random.Range(0, rootPoints.Length);
+        _rootNum = Random.Range(0, enemyRoots.Count);
         //穴生成時間の設定
         _randomTime = Random.Range(0.0f, 5.0f);
-        // Game Manager
-        objGameManager = GameObject.Find("GameManager");
     }
 
     /*
@@ -85,8 +91,7 @@ public class Enemy : MonoBehaviour
                 transform.position = enemyPos;
 
                 //穴を生成
-                bool isComboTerm = objGameManager.GetComponent<GameStateContoller>().IsComboTerm();
-                if (instance == false && isComboTerm == false)
+                if (instance == false)
                 {
                     CreateHole(enemyPos);
                 }
@@ -94,8 +99,14 @@ public class Enemy : MonoBehaviour
 
             case false:
                 //rootPointに向けてEnemyを移動
-                transform.position = Vector3.MoveTowards(transform.position, rootPoints[_rootNum].transform.position, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, enemyRoots[_rootNum].transform.position, speed * Time.deltaTime);
                 instance = false;
+
+                //もしEnemyの動きが止まってしまっていたらルートを再設定
+                if(_timer >= _randomTime && transform.position == enemyRoots[_rootNum].transform.position)
+                {
+                    RootSetting(1);
+                }
                 break;
         }
     }
@@ -106,7 +117,7 @@ public class Enemy : MonoBehaviour
         {
             case 1:
                 _beforeRootNum = _rootNum;
-                _rootNum = Random.Range(0, rootPoints.Length);
+                _rootNum = Random.Range(0, enemyRoots.Count);
 
                 switch (_rayHit)
                 {
@@ -114,7 +125,7 @@ public class Enemy : MonoBehaviour
                         //rootNumがひとつ前と同じだったら再度乱数設定
                         while (_rootNum == _beforeRootNum)
                         {
-                            _rootNum = Random.Range(0, rootPoints.Length);
+                            _rootNum = Random.Range(0, enemyRoots.Count);
                         }
                         break;
 
@@ -122,7 +133,7 @@ public class Enemy : MonoBehaviour
                         //rootNumがひとつ前と同じかつ行けないrootPointだったら再度乱数設定
                         while (_rootNum == _beforeRootNum || _rootNum == _canNotGoRootNum)
                         {
-                            _rootNum = Random.Range(0, rootPoints.Length);
+                            _rootNum = Random.Range(0, enemyRoots.Count);
                             _rayHit = true;
                         }
                         break;
