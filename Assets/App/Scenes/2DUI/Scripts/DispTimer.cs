@@ -24,12 +24,14 @@ public class DispTimer : MonoBehaviour
         if(isReverse)
         {
             counter = objGameManager.GetComponent<GameStateContoller>().GetGameReverseCounter();
+            int counterInt = (int)counter;
+            text.text = "RTimer:" + counterInt.ToString();
         }
         else
         {
             counter = objGameManager.GetComponent<GameStateContoller>().GetGameCounter();
+            int counterInt = (int)counter;
+            text.text = "Timer:" + counterInt.ToString();
         }
-        int counterInt = (int)counter;
-        text.text = "Timer:" + counterInt.ToString();
     }
 }
