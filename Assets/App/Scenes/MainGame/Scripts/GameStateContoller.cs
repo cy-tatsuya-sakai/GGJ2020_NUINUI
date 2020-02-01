@@ -76,7 +76,14 @@ public class GameStateContoller : MonoBehaviour
     void Update()
     {
         // Start Counter
-        if(isReverse)
+        if(gameStatus == GameStatus.Ready)
+        {
+            startCounter += Time.deltaTime;
+            if (startCounter > WaitForGameStart)
+            {
+                gameStatus = GameStatus.Game;
+            }
+        }else if (gameStatus == GameStatus.ReadyReverse)
         {
             startReverseCounter += Time.deltaTime;
             if (startReverseCounter > WaitForGameStart)
@@ -84,42 +91,28 @@ public class GameStateContoller : MonoBehaviour
                 gameStatus = GameStatus.GameReverse;
             }
         }
-        else
-        {
-            startCounter += Time.deltaTime;
-            if (startCounter > WaitForGameStart)
-            {
-                gameStatus = GameStatus.Game;
-            }
-        }
 
         // Game Counter
-        if(isReverse)
+        if (gameStatus == GameStatus.Game)
         {
-            if (gameStatus == GameStatus.GameReverse)
+            gameCounter += Time.deltaTime;
+            // 裏になる？
+            if (gameCounter > GameTimeMax)
             {
-                gameReverseCounter += Time.deltaTime;
-                // タイムアップ？
-                if(gameReverseCounter > GameReverseTimeMax)
-                {
-                    numOfExcellent = MainGameScore.excellent;
-                    numOfHoles = GetNumberOfHoles();
-                    gameStatus = GameStatus.Timeup;
-                    objTimeup.SetActive(true);
-                }
+                isReverse = true;
+                gameStatus = GameStatus.ReadyReverse;
             }
         }
-        else
+        else if (gameStatus == GameStatus.GameReverse)
         {
-            if (gameStatus == GameStatus.Game)
+            gameReverseCounter += Time.deltaTime;
+            // タイムアップ？
+            if (gameReverseCounter > GameReverseTimeMax)
             {
-                gameCounter += Time.deltaTime;
-                // 裏になる？
-                if(gameCounter > GameTimeMax)
-                {
-                    isReverse = true;
-                    gameStatus = GameStatus.ReadyReverse;
-                }
+                numOfExcellent = MainGameScore.excellent;
+                numOfHoles = GetNumberOfHoles();
+                gameStatus = GameStatus.Timeup;
+                objTimeup.SetActive(true);
             }
         }
 
@@ -211,6 +204,12 @@ public class GameStateContoller : MonoBehaviour
     int GetNumberOfHoles()
     {
         int holes = 0;
+        GameObject[] tagObjects;
+        tagObjects = GameObject.FindGameObjectsWithTag("Hole");
+        holes = tagObjects.Length;
+
+        Debug.Log("Number of Holes:");
+        Debug.Log(holes);
 
         return holes;
     }
