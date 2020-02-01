@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Lib.Util;
+using Lib.Sound;
 
 public class MarkingPinTest : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class MarkingPinTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.StopAll();
+
         _markingPinManager = Instantiate(_markingPinManagerPrefab);
         _scorePopupManager = Instantiate(_scorePopupManagerPrefab);
         _state = new StateMachine(State_Normal);
