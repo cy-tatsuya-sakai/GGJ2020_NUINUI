@@ -9,16 +9,31 @@ public class PlayerMove : MonoBehaviour
     private float distance_two;
     public float speed = 1.0F;
 
+    // for Game State
+    GameObject objGameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        objGameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // judge Game State
+        bool isGame = true;
+        GameStateContoller.GameStatus status;
+        status = objGameManager.GetComponent<GameStateContoller>().GetGameStatus();
+        if(status == GameStateContoller.GameStatus.Ready
+            || status == GameStateContoller.GameStatus.ReadyReverse)
+        {
+            isGame = false;
+        }
+
+        // ClikDown
+        if (Input.GetMouseButtonDown(0)
+            && isGame)
         {
             transform.LookAt(Marker);
             Vector3 pos = gameObject.transform.position;
