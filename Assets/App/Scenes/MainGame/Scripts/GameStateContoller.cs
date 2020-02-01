@@ -10,6 +10,8 @@ public class GameStateContoller : MonoBehaviour
     float GameTimeMax;
     [SerializeField, Header("コンボ期間に入るコンボ数")]
     int ComboTermNumMax = 3;
+    [SerializeField, Header("エネミーPrefab")]
+    GameObject objEnemy;
 
     // public
     public enum GameStatus
@@ -71,7 +73,8 @@ public class GameStateContoller : MonoBehaviour
                 comboCounter = 0.0f;
                 isComboTerm = false;
 
-                // ToDo:敵を増やす
+                // 敵を増やす
+                Instantiate(objEnemy, new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);
             }
         }
     }
