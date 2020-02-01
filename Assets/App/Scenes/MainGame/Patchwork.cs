@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 /// <summary>
 /// マチ針を結んでできた三角形
@@ -39,9 +40,15 @@ public class Patchwork : MonoBehaviour
         line1.transform.rotation = Quaternion.LookRotation(ba, Vector3.up);
         line2.transform.rotation = Quaternion.LookRotation(cb, Vector3.up);
         line3.transform.rotation = Quaternion.LookRotation(ac, Vector3.up);
-        line1.transform.localScale = new Vector3(0.1f, 0.1f, ba.magnitude);
-        line2.transform.localScale = new Vector3(0.1f, 0.1f, cb.magnitude);
-        line3.transform.localScale = new Vector3(0.1f, 0.1f, ac.magnitude);
+        // line1.transform.localScale = new Vector3(0.1f, 0.1f, ba.magnitude);
+        // line2.transform.localScale = new Vector3(0.1f, 0.1f, cb.magnitude);
+        // line3.transform.localScale = new Vector3(0.1f, 0.1f, ac.magnitude);
+        line1.transform.localScale = new Vector3(0.1f, 0.1f, 0.0f);
+        line2.transform.localScale = new Vector3(0.1f, 0.1f, 0.0f);
+        line3.transform.localScale = new Vector3(0.1f, 0.1f, 0.0f);
+        line1.transform.DOScaleZ(ba.magnitude, 0.25f).SetEase(Ease.OutQuad);
+        line2.transform.DOScaleZ(cb.magnitude, 0.25f).SetEase(Ease.OutQuad);
+        line3.transform.DOScaleZ(ac.magnitude, 0.25f).SetEase(Ease.OutQuad);
 
         var path = new Vector2[] {
             new Vector2(a.x, a.y),
