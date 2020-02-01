@@ -28,9 +28,9 @@ public class Patchwork : MonoBehaviour
         b.z = -0.6f;
         c.z = -0.6f;
         //
-        line1.transform.position = a;
-        line2.transform.position = b;
-        line3.transform.position = c;
+        line1.transform.localPosition = a;
+        line2.transform.localPosition = b;
+        line3.transform.localPosition = c;
 
         var ba = b - a;
         var cb = c - b;
