@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField,Header("Enemyの移動再開時間")] private int reStartTime;
 
+    // Game Manager
+    GameObject objGameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,8 @@ public class Enemy : MonoBehaviour
         _rootNum = Random.Range(0, rootPoints.Length);
         //穴生成時間の設定
         _randomTime = Random.Range(0.0f, 5.0f);
+        // Game Manager
+        objGameManager = GameObject.Find("GameManager");
     }
 
     /*
@@ -80,7 +85,8 @@ public class Enemy : MonoBehaviour
                 transform.position = enemyPos;
 
                 //穴を生成
-                if (instance == false)
+                bool isComboTerm = objGameManager.GetComponent<GameStateContoller>().IsComboTerm();
+                if (instance == false && isComboTerm == false)
                 {
                     CreateHole(enemyPos);
                 }
