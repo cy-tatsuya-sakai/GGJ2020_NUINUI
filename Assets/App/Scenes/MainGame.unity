@@ -1426,6 +1426,12 @@ PrefabInstance:
       propertyPath: comboCounterMax
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 348776549293662590, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
+        type: 3}
+      propertyPath: objEnemy
+      value: 
+      objectReference: {fileID: 3847922047982266227, guid: 57b2646c7a4778a4abc2bdb6219da5eb,
+        type: 3}
     - target: {fileID: 6297883253830353228, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
         type: 3}
       propertyPath: m_Name
