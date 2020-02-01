@@ -292,8 +292,8 @@ public class GameStateContoller : MonoBehaviour
     {
         for(int i=0; i<numberOfEnemiesForReverse;++i)
         {
-            float x = Random.RandomRange(-createEnemySpan, createEnemySpan);
-            float y = Random.RandomRange(-createEnemySpan, createEnemySpan);
+            float x = Random.Range(-createEnemySpan, createEnemySpan);
+            float y = Random.Range(-createEnemySpan, createEnemySpan);
             // 敵を増やす
             Instantiate(objEnemy, new Vector3(x, y, -1.0f), Quaternion.identity);
         }
