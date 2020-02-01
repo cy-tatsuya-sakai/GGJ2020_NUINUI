@@ -1121,53 +1121,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 334582057}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1902687478
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1902687480}
-  - component: {fileID: 1902687479}
-  m_Layer: 0
-  m_Name: MarkingPinTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1902687479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902687478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa8ee0dd4465da4c8bb5f8bd6b2000e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cam: {fileID: 656570467}
-  testObj: {fileID: 8170277442231605978, guid: 85afff36d2684b049a98a1b7d92bfad1, type: 3}
-  _markingPinManagerPrefab: {fileID: 1976762883040836117, guid: 249c752348e1fc94ab533aaef98e83f9,
-    type: 3}
---- !u!4 &1902687480
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902687478}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000558152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1596089334406161830, guid: 9c547f49be743d84d91bcf34917d96eb,
@@ -1505,3 +1458,77 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817dcc126c4e39b45a6a43a91e4cffbe, type: 3}
+--- !u!1001 &7080542038263178796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903060, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903066, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: m_Name
+      value: MarkingPinTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080542039045903067, guid: 7a5eb07ae3e806042872ce6869028101,
+        type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 656570467}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a5eb07ae3e806042872ce6869028101, type: 3}
