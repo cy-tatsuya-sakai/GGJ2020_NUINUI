@@ -54,20 +54,28 @@ public class MarkingPinManager : MonoBehaviour
             if(Mathf.Abs(Vector3.Dot(nn, ac)) > 0.001f)
             {
                 // 多少高さもあるみたいだし、多分三角形…
-                _markingPinList.Clear();
                 CreatePatchwork_(a, b, c);
-                Debug.Log("YYYYYYYYYYYYYYYYYYYYYY");
+                ClearPin();
             }
-        }
-        else
-        {
-            Debug.Log("BBBBBBBBBBBBBBBBBBBBBBB");
         }
     }
 
     private void CreatePatchwork_(Vector3 a, Vector3 b, Vector3 c)
     {
-        
+        var obj = Instantiate(_patchworkPrefab);
+        obj.transform.SetParent(transform);
+        _patchworkList.Add(obj);
+        obj.Init(a, b, c);
+    }
+
+    private void ClearPin()
+    {
+        int num = _markingPinList.Count;
+        for(int i = 0; i < num; i++)
+        {
+            Destroy(_markingPinList[i].gameObject);
+        }
+        _markingPinList.Clear();
     }
 
     /// <summary>
