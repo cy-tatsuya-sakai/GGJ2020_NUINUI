@@ -15,7 +15,7 @@ public class TitleController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Z)
             || Input.anyKeyDown)
         {
-            SceneManager.LoadScene("MainGame");
+            SceneManager.LoadScene("HowToPlay");
         }
     }
 }
