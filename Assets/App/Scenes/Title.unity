@@ -731,6 +731,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Title
       objectReference: {fileID: 0}
+    - target: {fileID: 7925049952168001728, guid: 808edf434412b7840b5e9de37a09ca2e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 729
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925049952168001728, guid: 808edf434412b7840b5e9de37a09ca2e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 516
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925049952168001728, guid: 808edf434412b7840b5e9de37a09ca2e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925049952168001728, guid: 808edf434412b7840b5e9de37a09ca2e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925049952168001729, guid: 808edf434412b7840b5e9de37a09ca2e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c8cbbb7273be1054c8e58436289de717,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808edf434412b7840b5e9de37a09ca2e, type: 3}
 --- !u!1001 &204933771809867391
@@ -740,6 +766,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 204933770201975908, guid: 4c5a223e45e26404283c997df82a2dda,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 14a203129db8a3b4398767596c5b189c,
+        type: 3}
     - target: {fileID: 204933771718175380, guid: 4c5a223e45e26404283c997df82a2dda,
         type: 3}
       propertyPath: m_LocalPosition.x
