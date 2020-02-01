@@ -213,4 +213,16 @@ public class GameStateContoller : MonoBehaviour
 
         return holes;
     }
+
+    // エネミーと穴と線をリセット
+    void ResetGameObject()
+    {
+
+    }
+
+    // エネミー再配置
+    void CreateEnemyForReverse()
+    {
+
+    }
 }
