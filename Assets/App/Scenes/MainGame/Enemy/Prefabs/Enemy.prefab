@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 982257726084697089}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,23 +96,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raydis: 50
   _rayHit: 0
-  rootPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   speed: 5
   _rootNum: 0
   _beforeRootNum: 0
   _canNotGoRootNum: 0
   moveStop: 0
   hole: {fileID: 6291912706085539509, guid: 4116ec5beaeff5f46a2f4c639d95b766, type: 3}
-  testHoleObj: {fileID: 0}
   reStartTime: 2
 --- !u!61 &445895380410598111
 BoxCollider2D:
