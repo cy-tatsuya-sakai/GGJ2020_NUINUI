@@ -23,12 +23,22 @@ public class GameStateContoller : MonoBehaviour
     float startCounter;
     float gameCounter;
 
+    // Combo Term Control
+    bool isComboTerm;
+    float comboCounter;
+    [SerializeField, Header("コンボ期間（穴の抑制）")]
+    float comboCounterMax = 3.0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gameStatus = GameStatus.Ready;
         startCounter = 0.0f;
         gameCounter = 0.0f;
+
+        isComboTerm = false;
+        comboCounter = 0.0f;
     }
 
     // Update is called once per frame
@@ -47,7 +57,23 @@ public class GameStateContoller : MonoBehaviour
         {
             gameCounter += Time.deltaTime;
         }
-        
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            SetComboTerm();
+        }
+
+        // Combo Counter
+        if (isComboTerm)
+        {
+            comboCounter += Time.deltaTime;
+            if (comboCounter > comboCounterMax)
+            {
+                comboCounter = 0.0f;
+                isComboTerm = false;
+            }
+            Debug.Log(comboCounter);
+        }
     }
 
     // ゲームステータス参照
@@ -60,5 +86,18 @@ public class GameStateContoller : MonoBehaviour
     public float GetGameCounter()
     {
         return gameCounter;
+    }
+
+    // コンボ期間中？
+    public bool IsComboTerm()
+    {
+        return isComboTerm;
+    }
+
+    // コンボ期間に入ります
+    public void SetComboTerm()
+    {
+        isComboTerm = true;
+        comboCounter = 0.0f;
     }
 }
