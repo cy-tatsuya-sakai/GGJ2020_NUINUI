@@ -43,3 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbe8a3a3bb05854f89ef7114ee6f21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaitForGameStart: 4
+  WaitForCreateEnemyReverse: 2
+  GameTimeMax: 30
+  GameReverseTimeMax: 30
+  ComboTermNumMax: 3
+  objEnemy: {fileID: 0}
+  numberOfEnemiesForReverse: 3
+  createEnemySpan: 5
+  timeupCounterMax: 3
+  comboCounterMax: 5
+  numberOfBadHoles: 4
+  numberOfExcellents: 20
+  gameLevelMax: 5
+  gameLevelupArea: 250
