@@ -38,10 +38,10 @@ public class MarkingPinManager : MonoBehaviour
     /// <summary>
     /// 三角形を作る
     /// </summary>
-    public void CreatePatchwork()
+    public float CreatePatchwork()
     {
         int num = _markingPinList.Count;
-        if(num < 4) { return; }
+        if(num < 4) { return 0.0f; }
         var a = _markingPinList[num - 1].transform.position;
         var b = _markingPinList[num - 2].transform.position;
         var c = _markingPinList[num - 3].transform.position;
@@ -54,13 +54,19 @@ public class MarkingPinManager : MonoBehaviour
             var ab = a - b;
             var ac = a - c;
             var nn = new Vector3(-ab.y, ab.x, ab.z).normalized;
-            if(Mathf.Abs(Vector3.Dot(nn, ac)) > 0.001f)
+            var hh = Mathf.Abs(Vector3.Dot(nn, ac));
+            if(hh > 0.001f)
             {
                 // 多少高さもあるみたいだし、多分三角形…
                 CreatePatchwork_(a, b, c);
                 ClearPin();
+
+                // 面積をリターン
+                return (ab.magnitude * hh) * 0.5f;
             }
         }
+
+        return 0.0f;
     }
 
     private void CreatePatchwork_(Vector3 a, Vector3 b, Vector3 c)
