@@ -62,6 +62,13 @@ public class GameStateContoller : MonoBehaviour
     // for delete lines
     MarkingPinManager markingPinManager;
 
+    // Game Level
+    int gameLevel;
+    [SerializeField, Header("ゲームレベル最大値")]
+    int gameLevelMax = 5;
+    [SerializeField, Header("ゲームレベルがあがる面積")]
+    float gameLevelupArea = 20.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +88,8 @@ public class GameStateContoller : MonoBehaviour
 
         objTimeup = GameObject.Find("Canvas Timeup");
         objTimeup.SetActive(false);
+
+        gameLevel = 0;
     }
 
     // Update is called once per frame
@@ -305,6 +314,24 @@ public class GameStateContoller : MonoBehaviour
             float y = Random.Range(-createEnemySpan, createEnemySpan);
             // 敵を増やす
             Instantiate(objEnemy, new Vector3(x, y, -1.0f), Quaternion.identity);
+        }
+    }
+
+    // ゲームレベル取得
+    public int GetGameLevel()
+    {
+        return gameLevel;
+    }
+
+    // ゲームレベル計算
+    public int CalculateGameLevel(float area)
+    {
+        if(area > gameLevelupArea)
+        {
+            if(gameLevel < gameLevelMax)
+            {
+                ++gameLevel;
+            }
         }
     }
 }
