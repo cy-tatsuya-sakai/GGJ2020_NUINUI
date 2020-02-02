@@ -35,7 +35,7 @@ public class GameStateContoller : MonoBehaviour
     bool isReverse;
     bool isCreatedEnemies;
     [SerializeField, Header("再配置するエネミーの数")]
-    int numberOfEnemiesForReverse = 3;
+    int numberOfEnemiesForReverse = 2;
     [SerializeField, Header("再配置するエネミーの範囲")]
     float createEnemySpan = 5.0f;
     float startReverseCounter;

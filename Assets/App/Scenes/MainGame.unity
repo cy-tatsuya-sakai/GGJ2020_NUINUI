@@ -444,6 +444,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6507695115619300232, guid: 82f8b4468c65a1c40a935f7b54ebce14,
+        type: 3}
+      propertyPath: _setting.mixerGroup
+      value: 
+      objectReference: {fileID: 243348600965424536, guid: 087b55ed37e78e84590d2b5fa8267bd5,
+        type: 2}
+    - target: {fileID: 6507695115619300232, guid: 82f8b4468c65a1c40a935f7b54ebce14,
+        type: 3}
+      propertyPath: _setting.soundData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7473a9e7d98eb794eb02f74318749685,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f8b4468c65a1c40a935f7b54ebce14, type: 3}
 --- !u!1 &352942024 stripped
@@ -2128,6 +2140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gameLevelupArea
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 348776549293662590, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
+        type: 3}
+      propertyPath: numberOfEnemiesForReverse
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6297883253830353228, guid: 817dcc126c4e39b45a6a43a91e4cffbe,
         type: 3}
