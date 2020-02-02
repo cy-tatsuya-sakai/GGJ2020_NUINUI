@@ -9,6 +9,7 @@ public class Hole : MonoBehaviour
 
     // Game Level
     private int _gameLevel;
+    private int _gameLevelMax;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +34,9 @@ public class Hole : MonoBehaviour
     }
 
     // Set Game Level
-    public void SetGameLevel(int level)
+    public void SetGameLevel(int level, int levelMax)
     {
         _gameLevel = level;
+        _gameLevelMax = levelMax;
     }
 }

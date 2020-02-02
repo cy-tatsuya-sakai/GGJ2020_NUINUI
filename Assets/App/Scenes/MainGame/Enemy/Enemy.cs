@@ -204,7 +204,8 @@ public class Enemy : MonoBehaviour
         var createHole = Instantiate(hole);
         createHole.transform.position = new Vector3(enemyPos.x, enemyPos.y, -0.55f);
         int level = objGameManager.GetComponent<GameStateContoller>().GetGameLevel();
-        createHole.GetComponent<Hole>().SetGameLevel(level);
+        int levelMax = objGameManager.GetComponent<GameStateContoller>().GetGameLevelMax();
+        createHole.GetComponent<Hole>().SetGameLevel(level,levelMax);
         instance = true;
         Invoke("ReStartEnemy", 3.0f);
     }
