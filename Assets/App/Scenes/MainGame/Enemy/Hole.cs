@@ -7,6 +7,9 @@ public class Hole : MonoBehaviour
     private float _speed, _timer;
     [SerializeField,Header("穴の最大サイズ")] private float maxSize;
 
+    // Game Level
+    private int _gameLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +30,11 @@ public class Hole : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+    // Set Game Level
+    public void SetGameLevel(int level)
+    {
+        _gameLevel = level;
     }
 }
