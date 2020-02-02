@@ -110,8 +110,9 @@ GameObject:
   - component: {fileID: 1895750484705149448}
   - component: {fileID: 1895750484705149450}
   - component: {fileID: 1895750484705149449}
+  - component: {fileID: 3730525518947482628}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Timeup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,3 +256,17 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3730525518947482628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895750484705149463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7610ea3ee4de445a718d1933a51087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
+  scaleMax: 4
