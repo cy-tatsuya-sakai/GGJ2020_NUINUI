@@ -21,20 +21,21 @@ public class Hole : MonoBehaviour
         //スピードによって拡大速度を変更
         if(_gameLevel == _gameLevelMax)
         {
-            _speed = Random.Range(speedMin * _gameLevelMax, speedMax * _gameLevelMax);
+            _speed = Random.Range(speedMin * (_gameLevelMax * 1.75f), speedMax * (_gameLevelMax * 1.75f));
         }
         else if (_gameLevel == 0)
         {
             _speed = Random.Range(speedMin, speedMax);
         }
-        else if(_gameLevel >= 1 && _gameLevel <= 2)
+        else if(_gameLevel >= 1 && _gameLevel <= 3)
         {
-            _speed = Random.Range(speedMin * (_gameLevel * 0.2f), speedMax * (_gameLevel * 0.2f));
+            _speed = Random.Range(speedMin * (_gameLevel * 1.25f), speedMax * (_gameLevel * 1.25f));
         }
-        else if(_gameLevel >= 3 && _gameLevel <= 4)
+        else if(_gameLevel >= 4 && _gameLevel < 5)
         {
-            _speed = Random.Range(speedMin * (_gameLevel * 0.5f), speedMax * (_gameLevel * 0.5f));
+            _speed = Random.Range(speedMin * (_gameLevel * 1.5f), speedMax * (_gameLevel * 1.5f));
         }
+
     }
 
     // Update is called once per frame

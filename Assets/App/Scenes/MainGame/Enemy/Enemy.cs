@@ -14,11 +14,11 @@ public class Enemy : MonoBehaviour
     //Enemyの移動ポイント
     [SerializeField] private List<GameObject> enemyRoots;
     [SerializeField, Header("Enemyの移動速度")] private float speed;
-    public int _rootNum, _beforeRootNum, _canNotGoRootNum;
+    private int _rootNum, _beforeRootNum, _canNotGoRootNum;
 
     public bool moveStop, reStart;
 
-    public float _timer, _randomTime, _sibireTimer;
+    private float _timer, _randomTime, _numbnessTimer;
 
     [SerializeField,Header("穴オブジェクト")] private GameObject hole;
     private bool instance;
@@ -72,21 +72,19 @@ public class Enemy : MonoBehaviour
         {
             RootSetting(2);
         }
-        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raydis, Color.red);
 
         if (reStart)
         {
             if(restartReset == false)
             {
-                _sibireTimer = 5.0f;
+                _numbnessTimer = 5.0f;
                 restartReset = true;
             }
 
             transform.position = enemyPos;
-            _sibireTimer -= Time.deltaTime;
-            Debug.Log(_sibireTimer);
+            _numbnessTimer -= Time.deltaTime;
 
-           if (_sibireTimer >= 0.0f)
+           if (_numbnessTimer >= 0.0f)
             {
                 enemyPos = transform.position;
             }
@@ -165,28 +163,6 @@ public class Enemy : MonoBehaviour
                     Debug.Log(_rootNum);
 
                 }
-                /*
-
-                switch (_rayHit)
-                {
-                    case true:
-                        //rootNumがひとつ前と同じだったら再度乱数設定
-                        while (_rootNum == _beforeRootNum)
-                        {
-                            _rootNum = Random.Range(0, enemyRoots.Count);
-                        }
-                        break;
-
-                    case false:
-                        //rootNumがひとつ前と同じかつ行けないrootPointだったら再度乱数設定
-                        while (_rootNum == _beforeRootNum || _rootNum == _canNotGoRootNum)
-                        {
-                            _rootNum = Random.Range(0, enemyRoots.Count);
-                            _rayHit = true;
-                        }
-                        break;
-                }
-                */
                 break;
 
             case 2:
