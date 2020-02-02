@@ -5,7 +5,9 @@ using UnityEngine;
 public class Hole : MonoBehaviour
 {
     private float _speed, _timer;
-    [SerializeField,Header("穴の最大サイズ")] private float maxSize;
+    [SerializeField, Header("穴の大きさの上限値")] private float maxSize;
+    [SerializeField,Header("穴の拡大速度の下限値")] private float speedMin;
+    [SerializeField, Header("穴の拡大速度の上限値")] private float speedMax;
 
     // Game Level
     private int _gameLevel;
@@ -14,8 +16,25 @@ public class Hole : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("GameLevel : " + _gameLevel);
+
         //スピードによって拡大速度を変更
-        _speed = Random.Range(5.0f, 10.0f);
+        if(_gameLevel == _gameLevelMax)
+        {
+            _speed = Random.Range(speedMin * _gameLevelMax, speedMax * _gameLevelMax);
+        }
+        else if (_gameLevel == 0)
+        {
+            _speed = Random.Range(speedMin, speedMax);
+        }
+        else if(_gameLevel >= 1 && _gameLevel <= 2)
+        {
+            _speed = Random.Range(speedMin * (_gameLevel * 0.2f), speedMax * (_gameLevel * 0.2f));
+        }
+        else if(_gameLevel >= 3 && _gameLevel <= 4)
+        {
+            _speed = Random.Range(speedMin * (_gameLevel * 0.5f), speedMax * (_gameLevel * 0.5f));
+        }
     }
 
     // Update is called once per frame
@@ -24,8 +43,8 @@ public class Hole : MonoBehaviour
         _timer += Time.deltaTime;
 
         //穴のサイズを徐々に大きくする
-        transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x + Time.deltaTime / _speed, 1.0f, maxSize),
-                                                                 Mathf.Clamp(transform.localScale.y + Time.deltaTime / _speed, 1.0f, maxSize));
+        transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x + Time.deltaTime * _speed, 1.0f, maxSize),
+                                                                 Mathf.Clamp(transform.localScale.y + Time.deltaTime * _speed, 1.0f, maxSize));
 
         if (_timer >= 3.0f)
         {
