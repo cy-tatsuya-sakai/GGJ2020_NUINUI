@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Pos
 {
@@ -13,6 +14,9 @@ public class Pos
 }
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] private GameObject _modelMove;
+    [SerializeField] private GameObject _modelPause;
+
     Camera cam;
     public Transform Marker;
     private float distance_two;
@@ -52,9 +56,17 @@ public class PlayerMove : MonoBehaviour
 
         {
             Pin = true;
-            transform.LookAt(Marker);
+            //transform.LookAt(Marker);
+            float ry = 90.0f;
+            if(Marker.position.x < transform.position.x)
+            {
+                ry = -90.0f;
+            }
+            transform.DORotate(new Vector3(0.0f, ry, 0.0f), 0.5f);
+            ChangeModel(true);
             MarkerPos._MarkerPos = Marker.position;
-            Instantiate(Light, Marker.position, Quaternion.identity);
+            var obj = Instantiate(Light, Marker.position, Quaternion.identity);
+            Destroy(obj.gameObject, 1.0f);
         }
 
         if (Pin == true)
@@ -63,11 +75,18 @@ public class PlayerMove : MonoBehaviour
             var PlayerPos = transform.position;
             distance_two = Vector3.Distance(PlayerPos, PMarker);
             transform.position = Vector3.SmoothDamp(PlayerPos, PMarker, ref velocity, smoothTime);
-            if (transform.position == PMarker)
+            if ((transform.position - PMarker).sqrMagnitude < 0.1f)
             {
                 Pin = false;
+                ChangeModel(false);
             }
         }
+    }
+
+    private void ChangeModel(bool isMove)
+    {
+        _modelMove.gameObject.SetActive(isMove);
+        _modelPause.gameObject.SetActive(isMove == false);
     }
  }
 
