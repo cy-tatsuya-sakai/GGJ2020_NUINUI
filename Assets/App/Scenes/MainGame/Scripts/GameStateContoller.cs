@@ -323,6 +323,12 @@ public class GameStateContoller : MonoBehaviour
         return gameLevel;
     }
 
+    // ゲームレベル最大値取得
+    public int GetGameLevelMax()
+    {
+        return gameLevelMax;
+    }
+
     // ゲームレベル計算
     public void CalculateGameLevel(float area)
     {
