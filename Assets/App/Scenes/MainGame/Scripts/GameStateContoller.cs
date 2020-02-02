@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Lib.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -150,6 +151,8 @@ public class GameStateContoller : MonoBehaviour
             // タイムアップ？
             if (gameReverseCounter > GameReverseTimeMax)
             {
+                SoundManager.Instance.BGM.Stop();
+                SoundManager.Instance.SE.Play(_SE._TIME_UP);
                 numOfExcellent = MainGameScore.excellent;
                 numOfHoles = GetNumberOfHoles();
                 gameStatus = GameStatus.Timeup;

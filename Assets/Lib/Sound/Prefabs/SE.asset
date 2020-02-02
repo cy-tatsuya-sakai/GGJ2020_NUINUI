@@ -34,7 +34,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 87fa92994bf8968449d486a4160f320f, type: 3}
   - key: NEEDLE
     clip: {fileID: 8300000, guid: 46fc8f32cb8c1f2449d829e0ba1cd67f, type: 3}
-  - key: A
-    clip: {fileID: 8300000, guid: 4077501f6785acd419956334be58f320, type: 3}
+  - key: OK
+    clip: {fileID: 8300000, guid: 50d015ecdeaad824fa911a05d0af8384, type: 3}
+  - key: TIME_UP
+    clip: {fileID: 8300000, guid: ba4aa86e3f753d24590fb36dba00949c, type: 3}
   - key: TRIANGLE
     clip: {fileID: 8300000, guid: a88bdf402d0510e43a087ccd1c9bd9d7, type: 3}
