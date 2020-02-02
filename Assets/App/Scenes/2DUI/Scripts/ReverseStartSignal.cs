@@ -50,7 +50,7 @@ public class ReverseStartSignal : MonoBehaviour
         {
             if(PrevSignalTimer <= timeStart)
             {
-                SoundManager.Instance.BGM.PlayCrossFade(_BGM._GAME_MUSIC);
+                SoundManager.Instance.BGM.PlayCrossFade(_BGM._GAME_MUSIC_BACK);
             }
             ObjReady.SetActive(false);
             ObjStart.SetActive(false);

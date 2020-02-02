@@ -10,6 +10,7 @@ public static class _SE
     public const string _COMBO8 = "COMBO8";
     public const string _COMBO9 = "COMBO9";
     public const string _NEEDLE = "NEEDLE";
-    public const string _A = "A";
+    public const string _OK = "OK";
+    public const string _TIME_UP = "TIME_UP";
     public const string _TRIANGLE = "TRIANGLE";
 }

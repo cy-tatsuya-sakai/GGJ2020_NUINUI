@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sourceFolder: Assets/Data/Sounds/BGM
   _audioClipInfoList:
-  - key: A
-    clip: {fileID: 8300000, guid: 877232a08c5417947afe054142f8ea07, type: 3}
+  - key: BADEND
+    clip: {fileID: 8300000, guid: 80bcb38183821c84b9d359f6b4cdec85, type: 3}
+  - key: GAME_MUSIC_BACK
+    clip: {fileID: 8300000, guid: 0b3a9af0d362425458ad0c123fd12d74, type: 3}
   - key: GAME_MUSIC
     clip: {fileID: 8300000, guid: 88fb8c7402b9f82489b4bcd95c91b315, type: 3}
+  - key: GOOD
+    clip: {fileID: 8300000, guid: 65268f693fcf16c499051cd61f16c626, type: 3}
   - key: TITLE_BGM
     clip: {fileID: 8300000, guid: 60455cd2dedc550438d56f534d371496, type: 3}

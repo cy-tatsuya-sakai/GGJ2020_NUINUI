@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Lib.Sound;
 using UnityEngine;
 
 public class PageFeed : MonoBehaviour
@@ -19,6 +20,7 @@ public class PageFeed : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
+            SoundManager.Instance.SE.Play(_SE._OK);
             if (howTos[0].activeInHierarchy)
             {
                 Page2();

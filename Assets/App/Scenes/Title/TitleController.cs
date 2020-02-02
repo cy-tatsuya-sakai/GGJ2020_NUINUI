@@ -16,6 +16,7 @@ public class TitleController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Z)
             || Input.anyKeyDown)
         {
+            SoundManager.Instance.SE.Play(_SE._OK);
             SceneManager.LoadScene("HowToPlay");
         }
     }

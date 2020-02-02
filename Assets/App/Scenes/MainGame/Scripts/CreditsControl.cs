@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Lib.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,7 @@ public class CreditsControl : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                SoundManager.Instance.SE.Play(_SE._OK);
                 SceneManager.LoadScene("Title");
             }
         }
