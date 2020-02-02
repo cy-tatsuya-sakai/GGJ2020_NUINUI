@@ -6,7 +6,6 @@ public class DressControl : MonoBehaviour
 {
     GameObject objDress;
     bool isRotated;
-    float angleY;
     [SerializeField, Header("回転する時間")]
     float counterRotateMax = 2.0f;
     float counter;
@@ -19,7 +18,6 @@ public class DressControl : MonoBehaviour
     {
         objDress = GameObject.Find("dress_NN_v2");
         isRotated = false;
-        angleY = 180.0f;
         counter = 0.0f;
 
         // Game Manager

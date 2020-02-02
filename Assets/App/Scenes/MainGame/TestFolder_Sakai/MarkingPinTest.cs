@@ -49,6 +49,7 @@ public class MarkingPinTest : MonoBehaviour
 
                 if(Input.GetMouseButtonDown(0) && HitDress(testObj.transform.position))
                 {
+                    // Ready 中はピンを刺せない
                     GameStateContoller.GameStatus status = objGameManager.GetComponent<GameStateContoller>().GetGameStatus();
                     if(status == GameStateContoller.GameStatus.Ready
                         || status == GameStateContoller.GameStatus.ReadyReverse)
@@ -63,9 +64,12 @@ public class MarkingPinTest : MonoBehaviour
 
                         // 何かに使えるかもしれないパッチ三角形の面積
                         var areaSize = _markingPinManager.CreatePatchwork();
-                        
+
+                        // 面積をゲームレベルに変換
+                        objGameManager.GetComponent<GameStateContoller>().CalculateGameLevel(areaSize);
+
                         //Debug.LogWarning(areaSize);
-                    }
+                        }
                 }
 
                 if(Input.GetMouseButtonDown(1))
