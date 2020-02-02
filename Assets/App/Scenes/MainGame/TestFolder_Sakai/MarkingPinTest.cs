@@ -61,7 +61,10 @@ public class MarkingPinTest : MonoBehaviour
                         var pos = (pin == null) ? testObj.transform.position : pin.transform.position;
                         _markingPinManager.AddPin(pos);
 
-                        _markingPinManager.CreatePatchwork();
+                        // 何かに使えるかもしれないパッチ三角形の面積
+                        var areaSize = _markingPinManager.CreatePatchwork();
+                        
+                        //Debug.LogWarning(areaSize);
                     }
                 }
 
