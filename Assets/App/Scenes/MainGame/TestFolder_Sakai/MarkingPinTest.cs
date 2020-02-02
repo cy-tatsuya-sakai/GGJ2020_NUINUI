@@ -49,11 +49,20 @@ public class MarkingPinTest : MonoBehaviour
 
                 if(Input.GetMouseButtonDown(0) && HitDress(testObj.transform.position))
                 {
-                    var pin = _markingPinManager.GetMarkingPin(testObj.transform.position);
-                    var pos = (pin == null) ? testObj.transform.position : pin.transform.position;
-                    _markingPinManager.AddPin(pos);
+                    GameStateContoller.GameStatus status = objGameManager.GetComponent<GameStateContoller>().GetGameStatus();
+                    if(status == GameStateContoller.GameStatus.Ready
+                        || status == GameStateContoller.GameStatus.ReadyReverse)
+                    {
 
-                    _markingPinManager.CreatePatchwork();
+                    }
+                    else
+                    {
+                        var pin = _markingPinManager.GetMarkingPin(testObj.transform.position);
+                        var pos = (pin == null) ? testObj.transform.position : pin.transform.position;
+                        _markingPinManager.AddPin(pos);
+
+                        _markingPinManager.CreatePatchwork();
+                    }
                 }
 
                 if(Input.GetMouseButtonDown(1))
