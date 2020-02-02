@@ -1164,6 +1164,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Press Any Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8705622960281033711, guid: 4c5a223e45e26404283c997df82a2dda,
+        type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c5a223e45e26404283c997df82a2dda, type: 3}
 --- !u!1001 &4904170743275586246
