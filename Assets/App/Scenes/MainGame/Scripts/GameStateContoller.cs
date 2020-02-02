@@ -67,7 +67,7 @@ public class GameStateContoller : MonoBehaviour
     [SerializeField, Header("ゲームレベル最大値")]
     int gameLevelMax = 5;
     [SerializeField, Header("ゲームレベルがあがる面積")]
-    float gameLevelupArea = 20.0f;
+    float gameLevelupArea = 250.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -324,8 +324,10 @@ public class GameStateContoller : MonoBehaviour
     }
 
     // ゲームレベル計算
-    public int CalculateGameLevel(float area)
+    public void CalculateGameLevel(float area)
     {
+        Debug.Log("Triangle Area:");
+        Debug.Log(area);
         if(area > gameLevelupArea)
         {
             if(gameLevel < gameLevelMax)
